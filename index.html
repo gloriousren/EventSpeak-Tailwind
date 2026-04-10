@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventSpeak | Webinar & Bootcamp Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 text-gray-800">
+
+<!-- NAVBAR -->
+<header class="bg-white shadow fixed w-full z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <h1 class="text-2xl font-bold text-indigo-600">EventSpeak</h1>
+
+    <!-- MENU DESKTOP -->
+    <nav class="hidden md:flex gap-8 font-medium text-gray-600 items-center">
+
+      <div class="relative group">
+        <button class="hover:text-indigo-600">Kategori</button>
+        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 w-48">
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Bisnis</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">IT</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Manajemen</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Data Science</a>
+        </div>
+      </div>
+
+      <a href="speaker-register.html" class="hover:text-indigo-600">Menjadi Pemateri</a>
+      <a href="team.html" class="hover:text-indigo-600">Team</a>
+      <a href="#contact" class="hover:text-indigo-600">Contact</a>
+
+      <!-- LOGIN BUTTON -->
+      <a href="login.html"
+        class="ml-4 px-5 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold shadow-lg hover:scale-105 transition flex items-center gap-2">
+
+        Login
+      </a>
+
+    </nav>
+
+    <!-- MOBILE BUTTON -->
+    <button id="menu-btn" class="md:hidden text-xl">☰</button>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 space-y-3 bg-white">
+    <p class="font-semibold">Kategori</p>
+    <a href="#">Bisnis</a>
+    <a href="#">IT</a>
+    <a href="#">Manajemen</a>
+    <a href="#">Data Science</a>
+    <hr>
+    <a href="speaker-register.html">Menjadi Pemateri</a>
+    <a href="team.html">Team</a>
+    <a href="#contact">Contact</a>
+
+    <!-- LOGIN MOBILE -->
+    <a href="login.html"
+      class="block text-center bg-indigo-600 text-white py-2 rounded-lg mt-2">
+      Login
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="pt-32 pb-24 bg-gradient-to-br from-indigo-50 via-white to-indigo-100 relative overflow-hidden">
+
+  <!-- Blur effect -->
+  <div class="absolute top-0 left-0 w-72 h-72 bg-indigo-300 rounded-full blur-3xl opacity-30"></div>
+  <div class="absolute bottom-0 right-0 w-72 h-72 bg-purple-300 rounded-full blur-3xl opacity-30"></div>
+
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative">
+    <div>
+      <h1 class="text-5xl font-bold mb-6">
+        Discover Webinars & Bootcamps
+        <span class="text-indigo-600"> For Your Future </span>
+      </h1>
+
+      <p class="text-lg text-gray-600 mb-8">
+        EventSpeak membantu mahasiswa dan profesional menemukan webinar,
+        workshop, dan bootcamp terbaik dalam satu platform.
+      </p>
+    </div>
+
+    <div>
+      <img src="dist/img/gambar1.jpeg" class="rounded-xl shadow-lg">
+    </div>
+  </div>
+</section>
+
+<!-- TUJUAN -->
+<section class="py-24 bg-indigo-700 text-white">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+
+    <h2 class="text-4xl font-bold mb-6">
+      Belajar Asik dengan EventSpeak
+    </h2>
+
+    <p class="text-indigo-100 mb-12">
+      EventSpeak hadir untuk mempermudah akses terhadap event edukasi serta meningkatkan kualitas pembelajaran bagi mahasiswa dan profesional.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="bg-white/10 backdrop-blur-lg p-6 rounded-xl border border-white/20 hover:scale-105 transition">
+        <h3 class="font-semibold mb-2">Akses Mudah</h3>
+        <p class="text-indigo-100">Semua event dalam satu platform.</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-lg p-6 rounded-xl border border-white/20 hover:scale-105 transition">
+        <h3 class="font-semibold mb-2">Pengembangan Skill</h3>
+        <p class="text-indigo-100">Tingkatkan kompetensi dengan mudah.</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-lg p-6 rounded-xl border border-white/20 hover:scale-105 transition">
+        <h3 class="font-semibold mb-2">Kolaborasi</h3>
+        <p class="text-indigo-100">Terhubung dengan pemateri & peserta.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="py-24 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-6 text-center mb-16">
+    <h2 class="text-4xl font-bold mb-4">Upcoming Events</h2>
+    <p class="text-gray-600">Event terbaru yang bisa kamu ikuti</p>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+    <div class="bg-white rounded-xl shadow hover:shadow-lg transition">
+      <img src="dist/img/web.jpg" class="w-full h-52 object-cover rounded-t-xl">
+      <div class="p-6">
+        <h3 class="font-semibold text-lg">Web Development Bootcamp</h3>
+        <p class="text-gray-500">Belajar HTML, CSS, JS</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow hover:shadow-lg transition">
+      <img src="dist/img/digital.jpg" class="w-full h-52 object-cover rounded-t-xl">
+      <div class="p-6">
+        <h3 class="font-semibold text-lg">Digital Marketing</h3>
+        <p class="text-gray-500">Strategi pemasaran modern</p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow hover:shadow-lg transition">
+      <img src="dist/img/uiux.jpg" class="w-full h-52 object-cover rounded-t-xl">
+      <div class="p-6">
+        <h3 class="font-semibold text-lg">UI/UX Bootcamp</h3>
+        <p class="text-gray-500">Desain aplikasi modern</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+ <footer id="contact" class="bg-gray-900 text-gray-400 py-16"></footer>
+
+    <footer class="bg-gray-900 text-gray-400 py-16">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+
+    <!-- LEFT SIDE -->
+    <div class="space-y-6">
+      <h2 class="text-white text-2xl font-bold">EventSpeak</h2>
+
+      <p class="text-gray-400">
+        Platform webinar & bootcamp terintegrasi untuk membantu mahasiswa dan profesional
+        menemukan serta mengikuti event edukatif terbaik.
+      </p>
+
+      <!-- SUPPORT -->
+      <div>
+        <h3 class="text-white font-semibold mb-2">Support</h3>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:text-white">Help Center</a></li>
+          <li><a href="#" class="hover:text-white">FAQ</a></li>
+          <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div>
+        <h3 class="text-white font-semibold mb-2">Contact</h3>
+        <p>Email: eventspeak@gmail.com</p>
+        <p>Phone: +62 812-3456-7890</p>
+      </div>
+
+      <!-- SOCIAL MEDIA -->
+      <div>
+        <h3 class="text-white font-semibold mb-2">Follow Us</h3>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-white">Instagram</a>
+          <a href="#" class="hover:text-white">LinkedIn</a>
+          <a href="#" class="hover:text-white">Twitter</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE (FORM) -->
+    <div class="bg-gray-800 p-8 rounded-xl shadow">
+      <h3 class="text-white text-xl font-semibold mb-4">
+        Send Us a Message
+      </h3>
+
+      <form class="space-y-4">
+        <input
+          type="text"
+          placeholder="Your Name"
+          class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400">
+
+        <input
+          type="email"
+          placeholder="Your Email"
+          class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400">
+
+        <textarea
+          rows="4"
+          placeholder="Your Message"
+          class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400"
+        ></textarea>
+        
+        <button
+          type="submit"
+          class="bg-indigo-600 w-full py-3 rounded-lg text-white hover:bg-indigo-700">
+          Send Message
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- COPYRIGHT -->
+  <div class="text-center text-sm text-gray-500 mt-10">
+    © 2026 EventSpeak. All rights reserved.
+  </div>
+</footer>
+
+<script>
+const btn = document.getElementById("menu-btn");
+const menu = document.getElementById("mobile-menu");
+btn.addEventListener("click", () => {
+  menu.classList.toggle("hidden");
+});
+</script>
+
+</body>
+</html>
