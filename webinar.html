@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Webinar | EventSpeak</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 text-gray-800">
+
+<!-- HEADER -->
+<header class="bg-white shadow fixed w-full z-50">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <a href="index.html" class="text-2xl font-bold text-indigo-600">
+      EventSpeak
+    </a>
+
+    <nav class="hidden md:flex gap-8 font-medium text-gray-600 items-center">
+      <a href="webinar.html" class="text-indigo-600 font-semibold">Webinar</a>
+      <a href="bootcamp.html">Bootcamp</a>
+      <a href="workshop.html">Workshop</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- CONTENT -->
+<section class="pt-32 pb-20 max-w-6xl mx-auto px-6">
+
+  <h1 class="text-4xl font-bold mb-6 text-indigo-600">
+    Webinar Events
+  </h1>
+
+  <p class="text-gray-600 mb-10">
+    Ikuti webinar menarik dari berbagai bidang untuk menambah wawasan.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <!-- CARD 1 (SUDAH BISA DIKLIK) -->
+    <a href="event-detail.html" class="block">
+      <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition cursor-pointer">
+
+        <img src="dist/img/web.jpg"
+             class="w-full h-52 object-cover hover:scale-105 transition duration-300">
+
+        <div class="p-6">
+          <h3 class="font-semibold text-lg">AI for Beginners</h3>
+          <p class="text-gray-500 mb-4">Pengenalan Artificial Intelligence</p>
+        </div>
+
+      </div>
+    </a>
+
+    <!-- CARD 2 -->
+    <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition">
+      <img src="dist/img/digital.jpg"
+           class="w-full h-52 object-cover hover:scale-105 transition duration-300">
+
+      <div class="p-6">
+        <h3 class="font-semibold text-lg">Career in Tech</h3>
+        <p class="text-gray-500 mb-4">Tips masuk industri IT</p>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition">
+      <img src="dist/img/uiux.jpg"
+           class="w-full h-52 object-cover hover:scale-105 transition duration-300">
+
+      <div class="p-6">
+        <h3 class="font-semibold text-lg">UI Design Basics</h3>
+        <p class="text-gray-500 mb-4">Dasar desain antarmuka</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>

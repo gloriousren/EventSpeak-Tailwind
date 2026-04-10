@@ -13,7 +13,7 @@
 <header class="bg-white shadow fixed w-full z-50">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-     <!-- LOGO -->
+    <!-- LOGO -->
     <a href="index.html" class="text-2xl font-bold text-indigo-600 hover:opacity-80 transition">
       EventSpeak
     </a>
@@ -21,13 +21,17 @@
     <!-- MENU DESKTOP -->
     <nav class="hidden md:flex gap-8 font-medium text-gray-600 items-center">
 
-      <div class="relative group">
-        <button class="hover:text-indigo-600">Kategori</button>
-        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 w-48">
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Bisnis</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">IT</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Manajemen</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100">Data Science</a>
+      <!-- KATEGORI (FIX CLICK) -->
+      <div class="relative">
+        <button id="kategori-btn" class="hover:text-indigo-600">
+          Kategori
+        </button>
+
+        <div id="kategori-menu"
+          class="absolute hidden bg-white shadow-lg rounded-lg mt-2 w-48 z-50">
+          <a href="webinar.html" class="block px-4 py-2 hover:bg-gray-100">Webinar</a>
+          <a href="bootcamp.html" class="block px-4 py-2 hover:bg-gray-100">Bootcamp</a>
+          <a href="workshop.html" class="block px-4 py-2 hover:bg-gray-100">Workshop</a>
         </div>
       </div>
 
@@ -35,13 +39,10 @@
       <a href="team.html" class="hover:text-indigo-600">Team</a>
       <a href="#contact" class="hover:text-indigo-600">Contact</a>
 
-      <!-- LOGIN BUTTON -->
       <a href="login.html"
-        class="ml-4 px-5 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold shadow-lg hover:scale-105 transition flex items-center gap-2">
-
+        class="ml-4 px-5 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold shadow hover:scale-105 transition">
         Login
       </a>
-
     </nav>
 
     <!-- MOBILE BUTTON -->
@@ -50,17 +51,26 @@
 
   <!-- MOBILE MENU -->
   <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 space-y-3 bg-white">
-    <p class="font-semibold">Kategori</p>
-    <a href="#">Bisnis</a>
-    <a href="#">IT</a>
-    <a href="#">Manajemen</a>
-    <a href="#">Data Science</a>
+
+    <!-- KATEGORI MOBILE -->
+    <div>
+      <button id="kategori-mobile-btn" class="font-semibold w-full text-left">
+        Kategori
+      </button>
+
+      <div id="kategori-mobile-menu" class="hidden ml-3 mt-2 space-y-1">
+        <a href="webinar.html" class="block">Webinar</a>
+        <a href="bootcamp.html" class="block">Bootcamp</a>
+        <a href="workshop.html" class="block">Workshop</a>
+      </div>
+    </div>
+
     <hr>
+
     <a href="speaker-register.html">Menjadi Pemateri</a>
     <a href="team.html">Team</a>
     <a href="#contact">Contact</a>
 
-    <!-- LOGIN MOBILE -->
     <a href="login.html"
       class="block text-center bg-indigo-600 text-white py-2 rounded-lg mt-2">
       Login
@@ -69,28 +79,19 @@
 </header>
 
 <!-- HERO -->
-<section class="pt-32 pb-24 bg-gradient-to-br from-indigo-50 via-white to-indigo-100 relative overflow-hidden">
-
-  <!-- Blur effect -->
-  <div class="absolute top-0 left-0 w-72 h-72 bg-indigo-300 rounded-full blur-3xl opacity-30"></div>
-  <div class="absolute bottom-0 right-0 w-72 h-72 bg-purple-300 rounded-full blur-3xl opacity-30"></div>
-
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative">
+<section class="pt-32 pb-24 bg-gradient-to-br from-indigo-50 via-white to-indigo-100">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
     <div>
       <h1 class="text-5xl font-bold mb-6">
         Discover Webinars & Bootcamps
         <span class="text-indigo-600"> For Your Future </span>
       </h1>
-
-      <p class="text-lg text-gray-600 mb-8">
+      <p class="text-lg text-gray-600">
         EventSpeak membantu mahasiswa dan profesional menemukan webinar,
         workshop, dan bootcamp terbaik dalam satu platform.
       </p>
     </div>
-
-    <div>
       <img src="dist/img/gambar1.jpeg" class="rounded-xl shadow-lg">
-    </div>
   </div>
 </section>
 
@@ -161,11 +162,9 @@
   </div>
 </section>
 
-
 <!-- FOOTER -->
- <footer id="contact" class="bg-gray-900 text-gray-400 py-16"></footer>
 
-    <footer class="bg-gray-900 text-gray-400 py-16">
+  <footer id="contact" class="bg-gray-900 text-gray-400 py-16">
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
 
     <!-- LEFT SIDE -->
@@ -227,7 +226,7 @@
           placeholder="Your Message"
           class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400"
         ></textarea>
-        
+
         <button
           type="submit"
           class="bg-indigo-600 w-full py-3 rounded-lg text-white hover:bg-indigo-700">
@@ -244,11 +243,37 @@
   </div>
 </footer>
 
+<!-- SCRIPT -->
 <script>
+// MOBILE MENU
 const btn = document.getElementById("menu-btn");
 const menu = document.getElementById("mobile-menu");
+
 btn.addEventListener("click", () => {
   menu.classList.toggle("hidden");
+});
+
+// DESKTOP DROPDOWN
+const kategoriBtn = document.getElementById("kategori-btn");
+const kategoriMenu = document.getElementById("kategori-menu");
+
+kategoriBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  kategoriMenu.classList.toggle("hidden");
+});
+
+document.addEventListener("click", (e) => {
+  if (!kategoriBtn.contains(e.target) && !kategoriMenu.contains(e.target)) {
+    kategoriMenu.classList.add("hidden");
+  }
+});
+
+// MOBILE DROPDOWN
+const kategoriMobileBtn = document.getElementById("kategori-mobile-btn");
+const kategoriMobileMenu = document.getElementById("kategori-mobile-menu");
+
+kategoriMobileBtn.addEventListener("click", () => {
+  kategoriMobileMenu.classList.toggle("hidden");
 });
 </script>
 
