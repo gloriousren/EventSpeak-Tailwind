@@ -196,19 +196,19 @@
               ahli di bidangnya. Belajar langsung dari praktisi industri global.
             </p>
             <div class="flex flex-wrap gap-4">
-              <button
-                type="button"
-                class="px-8 py-4 bg-primary text-on-primary rounded-lg font-headline font-bold text-lg hover:opacity-90 transition-all flex items-center gap-2"
+              <a
+              href="login.html"
+              class="px-8 py-4 bg-primary text-on-primary rounded-lg font-headline font-bold text-lg hover:opacity-90 transition-all flex items-center gap-2"
               >
-                Mulai Eksplorasi
-                <span class="material-symbols-outlined">arrow_forward</span>
-              </button>
-              <button
-                type="button"
-                class="px-8 py-4 bg-secondary-container text-on-secondary-container rounded-lg font-headline font-bold text-lg hover:bg-opacity-80 transition-all"
+              Mulai Eksplorasi
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+              <a
+              href="login.html"
+              class="px-8 py-4 bg-secondary-container text-on-secondary-container rounded-lg font-headline font-bold text-lg hover:bg-opacity-80 transition-all"
               >
-                Lihat Jadwal
-              </button>
+              Lihat Jadwal
+            </a>
             </div>
           </div>
           <div class="relative">
@@ -299,7 +299,7 @@
               </p>
               <a
                 class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all"
-                href="#"
+                href="login.html"
               >
                 Jelajahi Workshop
                 <span class="material-symbols-outlined">trending_flat</span>
@@ -326,7 +326,7 @@
               </p>
               <a
                 class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all"
-                href="#"
+                href="login.html"
               >
                 Jelajahi Webinar
                 <span class="material-symbols-outlined">trending_flat</span>
@@ -353,7 +353,7 @@
               </p>
               <a
                 class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all"
-                href="#"
+                href="login.html"
               >
                 Jelajahi Bootcamp
                 <span class="material-symbols-outlined">trending_flat</span>
@@ -422,12 +422,12 @@
                   <span class="text-tertiary font-bold text-lg"
                     >Rp 150.000</span
                   >
-                  <button
-                    type="button"
-                    class="px-5 py-2 bg-tertiary text-on-tertiary rounded-md font-bold text-sm hover:opacity-90 transition-opacity"
+                  <a
+                  href="login.html"
+                  class="px-5 py-2 bg-tertiary text-on-tertiary rounded-md font-bold text-sm hover:opacity-90 transition-opacity"
                   >
-                    Book Seat
-                  </button>
+                  Book Seat
+                </a>
                 </div>
               </div>
             </div>
@@ -469,12 +469,12 @@
                   <span class="text-tertiary font-bold text-lg"
                     >Rp 2.500.000</span
                   >
-                  <button
-                    type="button"
+                  <a
+                    href="login.html"
                     class="px-5 py-2 bg-tertiary text-on-tertiary rounded-md font-bold text-sm hover:opacity-90 transition-opacity"
                   >
                     Book Seat
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -516,12 +516,12 @@
                   <span class="text-tertiary font-bold text-lg"
                     >Rp 450.000</span
                   >
-                  <button
-                    type="button"
+                  <a
+                    href="login.html"
                     class="px-5 py-2 bg-tertiary text-on-tertiary rounded-md font-bold text-sm hover:opacity-90 transition-opacity"
                   >
                     Book Seat
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
