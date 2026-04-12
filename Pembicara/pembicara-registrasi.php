@@ -1,22 +1,3 @@
-<?php
-session_start();
-include '../koneksi.php';
-
-if ($_POST) {
-
-  $nama = $_POST['nama'];
-  $email = $_POST['email'];
-  $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-  mysqli_query($conn, "INSERT INTO user (nama_user, email_user, password_user) 
-  VALUES ('$nama', '$email', '$password')");
-
-  $_SESSION['user'] = $email;
-
-  header("Location: /eventspeak/pengguna/index.php");
-  exit;
-}
-?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -128,6 +109,7 @@ if ($_POST) {
   </head>
   <body class="bg-surface font-body text-on-surface overflow-x-hidden">
     <div class="min-h-screen flex items-center justify-center relative p-6">
+
       <!-- Background Elements -->
       <div class="absolute inset-0 z-0 overflow-hidden">
         <div
@@ -157,33 +139,32 @@ if ($_POST) {
             <h1
               class="text-2xl font-headline font-bold text-on-surface tracking-tight mb-2"
             >
-              Create Account
+              Daftar Sebagai Pembicara
             </h1>
             <p class="text-on-surface-variant text-sm">
-              Silakan isi data untuk membuat akun baru.
+              Isi informasi Anda untuk bergabung sebagai pembicara di EventSpeak.
             </p>
           </div>
-
-          <form method="POST" class="space-y-6">
-            <!-- Full Name -->
+          <form
+            method="POST"
+            action="proses_pembicara.php"
+            class="space-y-6"
+            enctype="multipart/form-data"
+          >
+            <!-- Nama -->
             <div class="space-y-2">
               <label
                 class="block text-xs font-bold uppercase tracking-widest text-primary/80 font-label"
               >
-                Full Name
+                Nama Lengkap
               </label>
-              <div class="relative">
-                <span
-                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm"
-                  >person</span
-                >
-                <input
-                  type="text"
-                  name="nama"
-                  placeholder="Nama lengkap"
-                  class="w-full bg-surface-variant/30 border-none rounded-xl py-3 pl-10 pr-4 text-on-surface placeholder:text-outline/60 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
-                >
-              </div>
+              <input
+                type="text"
+                name="nama"
+                placeholder="Nama lengkap"
+                class="w-full bg-surface-variant/30 border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
+                required
+              >
             </div>
 
             <!-- Email -->
@@ -191,73 +172,126 @@ if ($_POST) {
               <label
                 class="block text-xs font-bold uppercase tracking-widest text-primary/80 font-label"
               >
-                Email Address
+                Email
               </label>
-              <div class="relative">
-                <span
-                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm"
-                  >mail</span
-                >
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="name@email.com"
-                  class="w-full bg-surface-variant/30 border-none rounded-xl py-3 pl-10 pr-4 text-on-surface placeholder:text-outline/60 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
-                >
-              </div>
+              <input
+                type="email"
+                name="email"
+                placeholder="email@gmail.com"
+                class="w-full bg-surface-variant/30 border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
+                required
+              >
             </div>
 
-            <!-- Password -->
+            <!-- LinkedIn -->
             <div class="space-y-2">
               <label
                 class="block text-xs font-bold uppercase tracking-widest text-primary/80 font-label"
               >
-                Password
+                LinkedIn
               </label>
-              <div class="relative">
-                <span
-                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm"
-                  >lock</span
-                >
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="••••••••"
-                  class="w-full bg-surface-variant/30 border-none rounded-xl py-3 pl-10 pr-4 text-on-surface placeholder:text-outline/60 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
-                  autocomplete="new-password">
-              </div>
+              <input
+                type="url"
+                name="linkedin"
+                placeholder="https://linkedin.com/in/username"
+                class="w-full bg-surface-variant/30 border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
+              >
             </div>
 
-            <!-- Confirm Password -->
+            <!-- Bidang Keahlian -->
             <div class="space-y-2">
               <label
                 class="block text-xs font-bold uppercase tracking-widest text-primary/80 font-label"
               >
-                Confirm Password
+                Bidang Keahlian
               </label>
-              <div class="relative">
-                <span
-                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm"
-                  >lock_reset</span
-                >
-                <input
-                  type="password"
-                  placeholder="Ulangi password"
-                  class="w-full bg-surface-variant/30 border-none rounded-xl py-3 pl-10 pr-4 text-on-surface placeholder:text-outline/60 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
-                  autocomplete="current-password"
-                >
-              </div>
+              <input
+                type="text"
+                name="keahlian"
+                placeholder="Contoh: Web Developer, UI/UX Designer"
+                class="w-full bg-surface-variant/30 border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
+                required
+              >
             </div>
 
-            <!-- Register Button -->
+            <!-- Jenis Event -->
+            <div class="space-y-2">
+              <label
+                class="block text-xs font-bold uppercase tracking-widest text-primary/80 font-label"
+              >
+                Jenis Event
+              </label>
+              <select
+                name="jenis_event"
+                class="w-full bg-surface-variant/30 border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
+                required
+              >
+                <option value="">Pilih Jenis Event</option>
+                <option value="Webinar">Webinar</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Bootcamp">Bootcamp</option>
+              </select>
+            </div>
+
+            <!-- Topik Event -->
+            <div class="space-y-2">
+              <label
+                class="block text-xs font-bold uppercase tracking-widest text-primary/80 font-label"
+              >
+                Topik Event
+              </label>
+              <select
+                name="topik_event"
+                class="w-full bg-surface-variant/30 border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
+                required
+              >
+                <option value="">Pilih Topik</option>
+                <option value="Web Development">Web Development</option>
+                <option value="UI/UX">UI/UX</option>
+                <option value="Data Science">Data Science</option>
+                <option value="Digital Marketing">Digital Marketing</option>
+                <option value="Mobile Development">Mobile Development</option>
+              </select>
+            </div>
+
+            <!-- Pengalaman Event -->
+            <div class="space-y-2">
+              <label
+                class="block text-xs font-bold uppercase tracking-widest text-primary/80 font-label"
+              >
+                Pengalaman Event
+              </label>
+              <textarea
+                name="pengalaman"
+                rows="3"
+                placeholder="Ceritakan pengalaman Anda sebagai pembicara..."
+                class="w-full bg-surface-variant/30 border-none rounded-xl py-3 px-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
+              ></textarea>
+            </div>
+
+            <!-- Upload Portofolio -->
+            <div class="space-y-2">
+              <label
+                class="block text-xs font-bold uppercase tracking-widest text-primary/80 font-label"
+              >
+                Upload Portofolio
+              </label>
+              <input
+                type="file"
+                name="portofolio"
+                class="w-full bg-surface-variant/30 border-none rounded-xl py-3 px-4 text-on-surface file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-primary file:text-white hover:file:bg-primary/80"
+                required
+              >
+            </div>
+
+            <!-- Submit -->
             <button
               type="submit"
               class="w-full editorial-gradient text-on-primary font-headline font-bold py-4 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
             >
-              Register
+              Daftar Menjadi Pembicara
             </button>
           </form>
-
           <!-- Divider -->
           <div class="relative my-8">
             <div class="absolute inset-0 flex items-center">
@@ -266,52 +300,28 @@ if ($_POST) {
             <div
               class="relative flex justify-center text-xs uppercase tracking-widest font-bold"
             >
-              <span class="bg-white/0 px-4 text-outline/60">atau</span>
             </div>
           </div>
-
-          <!-- Google Register -->
-          <button
-            type="button"
-            class="w-full flex items-center justify-center gap-3 bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-semibold py-3.5 rounded-xl hover:bg-surface-container-low transition-all active:scale-[0.98] mb-8"
+          <p
+            class="mt-8 text-center text-[10px] text-outline uppercase tracking-[0.2em] font-bold"
           >
-            <img
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              class="w-5 h-5"
-              alt="Google Logo"
-            >
-            <span>Daftar dengan Google</span>
-          </button>
-
-          <!-- Footer -->
-          <div class="text-center">
-            <p class="text-sm text-on-surface-variant">
-              Sudah punya akun?
-              <a
-                href="login.php"
-                class="text-primary font-bold hover:underline underline-offset-4 decoration-2"
-              >
-                Login
-              </a>
-            </p>
-          </div>
-        <p
-          class="mt-8 text-center text-[10px] text-outline uppercase tracking-[0.2em] font-bold"
-        >
-          © 2026 EventSpeak
-        </p>
+            © 2026 EventSpeak
+          </p>
         </div>
+        <!-- END CARD -->
       </main>
-       <!-- Decorative Image Bleed -->
-    <div
-      class="hidden lg:block fixed top-20 right-[-100px] w-96 h-96 opacity-10"
-    >
-      <img
-        alt=""
-        class="w-full h-full object-contain rotate-12"
-        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7adZuzCeLzxOlJ9xBFL7fMZsxZKZj80dBDyL3t-zHbI7KSYtux2ZRxM93QVIefogeW4eTY9VqE0gtNAknEex9fs5qnGa_hX0NU1mp0mkqKjxbLbbqZAb7c9Qh2KTeeSt7_yTKykcItexXG2dGds2qFkcQcsSfq5SqxROTYPMRo_00tv6lT8Csz9fTq8FXnD9EPLG7qINlPlFBtTnFF9TeLwwaMMSjvHevSrKEjNW3L7VRTL8OotuQg_0_CPKrVt3cyoPhzMr6kUXO"
+      <!-- END MAIN -->
+
+      <!-- Decorative Image Bleed -->
+      <div
+        class="hidden lg:block fixed top-20 right-[-100px] w-96 h-96 opacity-10"
       >
-    </div>
+        <img
+          alt=""
+          class="w-full h-full object-contain rotate-12"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7adZuzCeLzxOlJ9xBFL7fMZsxZKZj80dBDyL3t-zHbI7KSYtux2ZRxM93QVIefogeW4eTY9VqE0gtNAknEex9fs5qnGa_hX0NU1mp0mkqKjxbLbbqZAb7c9Qh2KTeeSt7_yTKykcItexXG2dGds2qFkcQcsSfq5SqxROTYPMRo_00tv6lT8Csz9fTq8FXnD9EPLG7qINlPlFBtTnFF9TeLwwaMMSjvHevSrKEjNW3L7VRTL8OotuQg_0_CPKrVt3cyoPhzMr6kUXO"
+        >
+      </div>
     </div>
   </body>
 </html>

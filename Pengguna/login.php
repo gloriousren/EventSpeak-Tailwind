@@ -1,3 +1,28 @@
+<?php
+session_start();
+include '../koneksi.php';
+
+if ($_POST) {
+
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  $query = mysqli_query($conn, "SELECT * FROM user WHERE email_user='$email'");
+  $user = mysqli_fetch_assoc($query);
+
+  if ($user && password_verify($password, $user['password_user'])) {
+    
+    $_SESSION['user'] = $user['email_user'];
+
+    header("Location: /eventspeak/pengguna/index.php");
+    exit;
+
+  } else {
+    echo "Email atau password salah!";
+  }
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -143,7 +168,7 @@
               Please enter your details to access your stage.
             </p>
           </div>
-          <form class="space-y-6">
+          <form method="POST" action="login.php" class="space-y-6">
             <!-- Email Input -->
             <div class="space-y-2">
               <label
@@ -227,7 +252,7 @@
             Belum punya akun?
             <a
               class="text-primary font-bold hover:underline underline-offset-4 decoration-2 transition-all"
-              href="registrasi.html" 
+              href="registrasi.php" 
             >
               Daftar
             </a>

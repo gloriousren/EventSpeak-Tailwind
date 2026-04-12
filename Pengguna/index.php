@@ -1,3 +1,8 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['user']);
+?>
+
 <!DOCTYPE html>
 
 <html class="light" lang="id">
@@ -136,12 +141,12 @@
           <div class="hidden md:flex gap-8 items-center">
             <a
              class="text-teal-700 dark:text-teal-300 border-b-2 border-teal-700 dark:border-teal-300 pb-1 font-headline font-semibold tracking-tight"
-              href="#"
+              href="index.php"
               >Browse</a
             >
             <a
               class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-              href="#"
+              href="eksplorasi.php"
               >Featured</a
             >
             <a
@@ -162,20 +167,36 @@
           </div>
         </div>
         <div class="flex items-center gap-4">
-          <a
-          href="login.html"
-          class="px-5 py-2 text-primary font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-xl inline-block"
-          >
-          Login
-        </a>
-        <a
-          href="registrasi.html"
-          class="px-6 py-2 bg-primary text-on-primary font-bold rounded-xl shadow-md hover:scale-95 duration-200"
-          type="button"
-        >
-          Sign Up
-        </a>
-        </div>
+  <?php if ($isLoggedIn): ?>
+
+    <!-- Avatar -->
+    <a href="profil.php" 
+    class="w-10 h-10 rounded-full overflow-hidden shadow-md hover:scale-95 transition">
+      <img 
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7V9Te4MhqGJF4B4UsLUoraWH5dNjTAK7sF-VbS5sDev2unalotsCqi2Q_70_T605O60TpZlQtsOtRCNXGBvbl7-6P-yDfvh-iN2Z7MUwwAmyB67x5O_bRbbL8FgWSl53ELODN0CUecRzMlPpD8vgswrMx9ETO1UZznR_v1GIgzQYnq8YYd2p5Decj1MclJm1CpX5_WVxP1cma9cDke40F4j2jEZ7PTXuTM-4SuZp0HU2sYHghdTkYo2ZGvfwg2s2XJ3BN9i6cLA"
+        class="w-full h-full object-cover"
+      >
+    </a>
+
+  <?php else: ?>
+
+    <!-- Belum login -->
+    <a
+      href="login.php"
+      class="px-5 py-2 text-primary font-semibold hover:bg-slate-100 rounded-xl"
+    >
+      Login
+    </a>
+
+    <a
+      href="registrasi.php"
+      class="px-6 py-2 bg-primary text-on-primary font-bold rounded-xl shadow-md hover:scale-95 duration-200"
+    >
+      Sign Up
+    </a>
+
+  <?php endif; ?>
+</div>
       </div>
     </nav>
     <main class="pt-20">
@@ -196,18 +217,24 @@
               ahli di bidangnya. Belajar langsung dari praktisi industri global.
             </p>
             <div class="flex flex-wrap gap-4">
-              <a
-              href="login.html"
-              class="px-8 py-4 bg-primary text-on-primary rounded-lg font-headline font-bold text-lg hover:opacity-90 transition-all flex items-center gap-2"
-              >
-              Mulai Eksplorasi
-              <span class="material-symbols-outlined">arrow_forward</span>
-            </a>
-              <a
-              href="login.html"
-              class="px-8 py-4 bg-secondary-container text-on-secondary-container rounded-lg font-headline font-bold text-lg hover:bg-opacity-80 transition-all"
-              >
-              Lihat Jadwal
+              <?php if ($isLoggedIn): ?>
+  <a
+    href="eksplorasi.php"
+    class="px-8 py-4 bg-primary text-on-primary rounded-lg font-headline font-bold text-lg hover:opacity-90 transition-all flex items-center gap-2"
+  >
+    Mulai Eksplorasi
+    <span class="material-symbols-outlined">arrow_forward</span>
+  </a>
+<?php else: ?>
+  <a
+    href="login.php"
+    class="px-8 py-4 bg-primary text-on-primary rounded-lg font-headline font-bold text-lg hover:opacity-90 transition-all flex items-center gap-2"
+  >
+    Mulai Eksplorasi
+    <span class="material-symbols-outlined">arrow_forward</span>
+  </a>
+<?php endif; ?>
+              
             </a>
             </div>
           </div>
@@ -299,7 +326,7 @@
               </p>
               <a
                 class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all"
-                href="login.html"
+                href="login.php"
               >
                 Jelajahi Workshop
                 <span class="material-symbols-outlined">trending_flat</span>
@@ -326,7 +353,7 @@
               </p>
               <a
                 class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all"
-                href="login.html"
+                href="login.php"
               >
                 Jelajahi Webinar
                 <span class="material-symbols-outlined">trending_flat</span>
@@ -353,7 +380,7 @@
               </p>
               <a
                 class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all"
-                href="login.html"
+                href="login.php"
               >
                 Jelajahi Bootcamp
                 <span class="material-symbols-outlined">trending_flat</span>
@@ -423,7 +450,7 @@
                     >Rp 150.000</span
                   >
                   <a
-                  href="login.html"
+                  href="login.php"
                   class="px-5 py-2 bg-tertiary text-on-tertiary rounded-md font-bold text-sm hover:opacity-90 transition-opacity"
                   >
                   Book Seat
@@ -470,7 +497,7 @@
                     >Rp 2.500.000</span
                   >
                   <a
-                    href="login.html"
+                    href="login.php"
                     class="px-5 py-2 bg-tertiary text-on-tertiary rounded-md font-bold text-sm hover:opacity-90 transition-opacity"
                   >
                     Book Seat
@@ -517,7 +544,7 @@
                     >Rp 450.000</span
                   >
                   <a
-                    href="login.html"
+                    href="login.php"
                     class="px-5 py-2 bg-tertiary text-on-tertiary rounded-md font-bold text-sm hover:opacity-90 transition-opacity"
                   >
                     Book Seat

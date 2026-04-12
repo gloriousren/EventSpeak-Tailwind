@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user'])) {
+  header("Location: login.php");
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 
 <html class="light" lang="id">
@@ -130,13 +139,13 @@
           >
           <div class="hidden md:flex gap-8 items-center">
             <a
-             class="text-teal-700 dark:text-teal-300 border-b-2 border-teal-700 dark:border-teal-300 pb-1 font-headline font-semibold tracking-tight"
-              href="#"
+             class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
+              href="index.php"
               >Browse</a
             >
             <a
-              class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-              href="#"
+              class="text-teal-700 dark:text-teal-300 border-b-2 border-teal-700 dark:border-teal-300 pb-1 font-headline font-semibold tracking-tight"
+              href="eksplorasi.php"
               >Featured</a
             >
             <a
@@ -157,18 +166,13 @@
           </div>
         </div>
         <div class="flex items-center gap-4">
-          <button
-          class="px-5 py-2 text-primary font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-xl"
-          type="button"
-        >
-          Login
-        </button>
-        <button
-          class="px-6 py-2 bg-primary text-on-primary font-bold rounded-xl shadow-md hover:scale-95 duration-200"
-          type="button"
-        >
-          Sign Up
-        </button>
+          
+        <a href="profil.php" class="w-10 h-10 rounded-full overflow-hidden shadow-md hover:scale-95 transition">
+      <img 
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7V9Te4MhqGJF4B4UsLUoraWH5dNjTAK7sF-VbS5sDev2unalotsCqi2Q_70_T605O60TpZlQtsOtRCNXGBvbl7-6P-yDfvh-iN2Z7MUwwAmyB67x5O_bRbbL8FgWSl53ELODN0CUecRzMlPpD8vgswrMx9ETO1UZznR_v1GIgzQYnq8YYd2p5Decj1MclJm1CpX5_WVxP1cma9cDke40F4j2jEZ7PTXuTM-4SuZp0HU2sYHghdTkYo2ZGvfwg2s2XJ3BN9i6cLA"
+        class="w-full h-full object-cover"
+      >
+    </a>
 
       </div>
       </div>
@@ -540,14 +544,7 @@
             </div>
           </div>
         </div>
-        <!-- Pagination/Load More -->
         <div class="mt-16 flex justify-center">
-          <button
-            type="button"
-            class="flex items-center gap-2 px-8 py-4 bg-white border border-outline-variant/30 text-primary font-bold rounded-xl hover:bg-surface-container transition-colors shadow-sm"
-          >
-            Tampilkan Lebih Banyak
-            <span class="material-symbols-outlined">expand_more</span>
           </button>
         </div>
       </section>

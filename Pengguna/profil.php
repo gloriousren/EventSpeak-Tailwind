@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Profil | EventSpeak</title>
+    <title>EventSpeak</title>
     <meta charset="utf-8" >
     <meta content="width=device-width, initial-scale=1.0" name="viewport" >
     <link
@@ -53,12 +53,12 @@
           <div class="hidden md:flex gap-8 items-center">
             <a
              class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-              href="#"
+              href="index.php"
               >Browse</a
             >
             <a
               class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-              href="#"
+              href="eksplorasi.php"
               >Featured</a
             >
             <a
@@ -78,9 +78,14 @@
             >
           </div>
         </div>
-            <img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover ring-2 ring-indigo-100"
-                data-alt="Close up portrait of a professional man with a friendly smile, soft natural studio lighting, neutral grey background"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3k277rb8JimoTjrIQTRHxNvSkemszmgGyRYewTepukmfHnR0ugcEHjZzvpNg-8xustV73XRmTQH1knYyw5T0JNvlQ815WuV4UDu-5M5zboipfE57bLiuJcGKf2RwnKNTEOD43jc7hK5hwFjZ4ZeWLWMM5OTFjphPT9nC1mWu4-qxXnowR7teFHIt1PQqCqpXmIrcATV14kd1wNhvu4JxPD-NQ-efzWq_jqEwm9ifB5ef88NDVIVelNTK7NvLFYXLyhQIdsxxo9w" >
+            <!-- Avatar Profil -->
+    <a href="profil.php" class="w-10 h-10 rounded-full overflow-hidden shadow-md hover:scale-95 transition">
+      <img 
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7V9Te4MhqGJF4B4UsLUoraWH5dNjTAK7sF-VbS5sDev2unalotsCqi2Q_70_T605O60TpZlQtsOtRCNXGBvbl7-6P-yDfvh-iN2Z7MUwwAmyB67x5O_bRbbL8FgWSl53ELODN0CUecRzMlPpD8vgswrMx9ETO1UZznR_v1GIgzQYnq8YYd2p5Decj1MclJm1CpX5_WVxP1cma9cDke40F4j2jEZ7PTXuTM-4SuZp0HU2sYHghdTkYo2ZGvfwg2s2XJ3BN9i6cLA" 
+        alt="Profile"
+        class="w-full h-full object-cover"
+      >
+    </a>
         </div>
     </nav>
     <div class="flex pt-20">
@@ -99,9 +104,9 @@
                     <span class="font-inter text-sm">Profil</span>
                 </a>
                 <a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 hover:translate-x-1 transition-transform"
-                    href="Penyelengga.html">
+                    href="../Penyelenggara/penyelenggara.php">
                     <span class="material-symbols-outlined">stars</span>
-                    <span class="font-inter text-sm">Become an Organizer</span>
+                    <span class="font-inter text-sm">Menjadi Penyelenggara</span>
                 </a>
             </div>
             <div class="mt-auto pt-6 flex flex-col gap-1 border-t border-slate-200">

@@ -116,7 +116,7 @@
             background-color: #f2f4f6;
         }
 
-        </script><style>.material-symbols-outlined {
+        .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
@@ -133,7 +133,7 @@
 </head>
 
 <body class="bg-surface text-on-surface antialiased min-h-screen">
-    <header <nav
+    <header
         class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0px_20px_40px_rgba(25,28,30,0.06)] h-20">
         <div class="flex justify-between items-center px-8 h-full max-w-full mx-auto">
             <div class="flex items-center gap-12">
@@ -141,9 +141,9 @@
                     class="text-2xl font-black text-teal-900 dark:text-teal-100 font-headline tracking-tight">EventSpeak</span>
                 <div class="hidden md:flex gap-8 items-center">
                     <a class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-                        href="#">Browse</a>
+                        href="../pengguna/index.php">Browse</a>
                     <a class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-                        href="#">Featured</a>
+                        href="../pengguna/eksplorasi.php">Featured</a>
                     <a class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
                         href="#">Schedule</a>
                     <a class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
@@ -156,11 +156,13 @@
                 <button
                     class="px-5 py-2 text-primary font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-xl"
                     type="button">
-                    <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high">
-                        <img alt="User profile avatar" class="w-full h-full object-cover"
-                            data-alt="professional portrait of a creative professional in a clean studio setting with soft lighting"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7FRJZRmqaadzbl84SFJfAvkxkXsEfYxM-y3632bQYInE8oX_DR8ALbssJSfa6uFXwEyRBi5odbAkAutxA1zOoDtLZO8fdHKad_KZeh6C1gqGemBF6tvBlh-LwF3JvgqraqrDkHLoaSGcGVfOY10v_MoeosDfCTPljWehQ71tAuBLjP-z-YdEuaEFo_29X4lvpRjllhQacYJkymqGt5xaR8EbhDjz15SpMBqujsd-rJSuSYbw9tjA8WiiLazZUj9nuH0ihv37WEg" />
-                    </div>
+                    <a href="../Pengguna/profil.php" class="block w-10 h-10 rounded-full overflow-hidden bg-surface-container-high hover:scale-95 transition">
+    <img 
+        alt="User profile avatar" 
+        class="w-full h-full object-cover"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7V9Te4MhqGJF4B4UsLUoraWH5dNjTAK7sF-VbS5sDev2unalotsCqi2Q_70_T605O60TpZlQtsOtRCNXGBvbl7-6P-yDfvh-iN2Z7MUwwAmyB67x5O_bRbbL8FgWSl53ELODN0CUecRzMlPpD8vgswrMx9ETO1UZznR_v1GIgzQYnq8YYd2p5Decj1MclJm1CpX5_WVxP1cma9cDke40F4j2jEZ7PTXuTM-4SuZp0HU2sYHghdTkYo2ZGvfwg2s2XJ3BN9i6cLA"
+    />
+</a>
             </div>
     </header>
     <div class="flex min-h-screen">
@@ -172,12 +174,12 @@
             </div>
             <nav class="flex-grow space-y-1">
                 <a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-100 transition-transform hover:translate-x-1 rounded-lg font-medium text-sm"
-                    href="#">
+                    href="../pengguna/profil.php">
                     <span class="material-symbols-outlined">person</span>
                     <span>Profil</span>
                 </a>
                 <a class="flex items-center gap-3 px-4 py-3 text-teal-700 font-bold bg-white rounded-lg shadow-sm font-medium text-sm"
-                    href="#">
+                    href="dashboard.php">
                     <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">stars</span>
                     <span>Menjadi Penyelenggara</span>
                 </a>
