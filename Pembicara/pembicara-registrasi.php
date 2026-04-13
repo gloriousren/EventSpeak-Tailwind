@@ -121,9 +121,9 @@
         <div class="hidden md:flex gap-8 items-center">
           <a class="font-manrope text-slate-600 hover:text-teal-600" href="../Pengguna/index.php">Browse</a>
           <a class="font-manrope text-slate-600 hover:text-teal-600" href="../Pengguna/eksplorasi.php">Featured</a>
-          <a class="font-manrope text-slate-600 hover:text-teal-600" href="#">Schedule</a>
+          <a class="font-manrope text-slate-600 hover:text-teal-600" href="../Pengguna/schedule.php">Schedule</a>
           <a class="text-teal-700 border-b-2 border-teal-700 pb-1 font-headline font-semibold" href="pembicara-registrasi.php">Become a Speaker</a>
-          <a class="font-manrope text-slate-600 hover:text-teal-600" href="#">Team</a>
+          <a class="font-manrope text-slate-600 hover:text-teal-600" href="../Pengguna/team.php">Team</a>
         </div>
       </div>
 
@@ -178,7 +178,7 @@
           </div>
           <form
             method="POST"
-            action="proses_pembicara.php"
+            action="proses-registrasi.php"
             class="space-y-6"
             enctype="multipart/form-data"
           >

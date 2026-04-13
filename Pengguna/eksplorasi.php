@@ -140,13 +140,17 @@ if (!$isLoggedIn) {
           >
           <div class="hidden md:flex gap-8 items-center">
             <a
+<<<<<<< HEAD
              class="text-teal-700 dark:text-teal-300 border-b-2 border-teal-700 dark:border-teal-300 pb-1 font-headline font-semibold tracking-tight"
+=======
+             class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
+>>>>>>> 8b520f32b6060fd97bfecdf19c1465b9eedd5811
               href="index.php"
               >Browse</a
             >
             <a
-              class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-              href="#"
+              class="text-teal-700 dark:text-teal-300 border-b-2 border-teal-700 dark:border-teal-300 pb-1 font-headline font-semibold tracking-tight"
+              href="eksplorasi.php"
               >Featured</a
             >
             <a
@@ -156,7 +160,7 @@ if (!$isLoggedIn) {
             >
             <a
               class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-              href="#"
+              href="../Pembicara/pembicara-registrasi.php"
               >Become a Speaker</a
             >
             <a
