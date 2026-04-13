@@ -573,6 +573,7 @@ if (!$isLoggedIn) {
         </div>
       </section>
     </main>
+    
     <!-- Footer -->
     <footer class="w-full py-16 px-8 mt-auto bg-slate-100 dark:bg-slate-950">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
