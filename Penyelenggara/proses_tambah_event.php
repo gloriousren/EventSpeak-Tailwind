@@ -7,6 +7,7 @@ $nama = $_POST['nama_event'];
 $deskripsi = $_POST['deskripsi'];
 $tanggal = $_POST['tanggal'];
 $lokasi = $_POST['lokasi'];
+$harga = $_POST['Harga'];
 $pemateri = $_POST['Pemateri'];
 
 // upload gambar
