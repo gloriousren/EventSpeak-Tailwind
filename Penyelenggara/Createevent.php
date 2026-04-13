@@ -1,8 +1,3 @@
-<?php
-$conn = mysqli_connect("127.0.0.1:3307", "root", "", "db_eventspeak");
-$data = mysqli_query($conn, "SELECT * FROM Penyelenggara ORDER BY id DESC");
-?>
-
 <!DOCTYPE html>
 
 <html class="light" lang="id">
@@ -137,7 +132,7 @@ $data = mysqli_query($conn, "SELECT * FROM Penyelenggara ORDER BY id DESC");
     </style>
 </head>
 
-<body class="bg-surface text-on-surface antialiased min-h-screen">
+<body class="flex flex-col min-h-screen">
     <header
         class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0px_20px_40px_rgba(25,28,30,0.06)] h-20">
         <div class="flex justify-between items-center px-8 h-full max-w-full mx-auto">
@@ -168,9 +163,9 @@ $data = mysqli_query($conn, "SELECT * FROM Penyelenggara ORDER BY id DESC");
                     </a>
             </div>
     </header>
-    <div class="flex min-h-screen">
+    <div class="flex flex-1 pt-20">
         <aside
-            class="h-[calc(100vh-80px)] w-64 sticky left-0 top-20 flex flex-col p-6 gap-2 bg-slate-50 border-r border-slate-100">
+            class="w-64 h-[calc(100vh-5rem)] sticky top-20 flex flex-col p-6 gap-2 bg-slate-50 border-r border-slate-100">
             <div class="mb-8 px-2">
                 <h2 class="font-manrope font-extrabold text-xl text-on-background">Alex Rivera</h2>
                 <p class="font-inter text-xs font-medium text-slate-500 tracking-wider uppercase">Premium Member</p>
@@ -195,7 +190,7 @@ $data = mysqli_query($conn, "SELECT * FROM Penyelenggara ORDER BY id DESC");
                         <span class="material-symbols-outlined">help</span>
                         <span>Help Center</span>
                     </a>
-                    <button onclick="openModal()"
+                    <button type="butoon" onclick="openModal()"
                         class="w-full flex items-center gap-3 px-4 py-2 text-error hover:bg-error-container/20 rounded-lg text-sm transition-transform hover:translate-x-1">
                         <span class="material-symbols-outlined">logout</span>
                         <span>Sign Out</span>
@@ -203,207 +198,215 @@ $data = mysqli_query($conn, "SELECT * FROM Penyelenggara ORDER BY id DESC");
                 </div>
             </div>
         </aside>
-        </aside>>
         <!-- Main Content -->
         <main class="flex-1 pt-24 pb-12 px-8">
-            <header class="mb-12 max-w-6xl mx-auto">
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                    <div>
-                        <span class="label-sm text-primary font-bold tracking-[0.05em] uppercase text-xs">Organizer
-                            Hub</span>
-                        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-on-surface mt-2">Welcome
-                            back,
-                            Alex.</h1>
-                    </div>
-                    <button type="button" onclick="window.location.href='Createevent.php'"
-                        class="bg-gradient-to-r from-primary to-primary-container text-on-primary py-2 px-3 rounded-lg text-sm font-medium flex items-center justify-center gap-2 shadow active:scale-95 duration-200">
+            <div class="max-w-4xl mx-auto">
+                <!-- HERO / BANNER -->
+                <div class="max-w-6xl mx-auto mb-12">
+                    <div
+                        class="bg-gradient-to-r from-teal-900 to-teal-700 rounded-3xl p-10 text-white relative overflow-hidden">
 
-                        <span class="material-symbols-outlined text-base">add_circle</span>
-                        <span>Create Event</span>
+                        <!-- Badge -->
+                        <span
+                            class="text-xs uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full font-semibold">
+                            Create Event
+                        </span>
+
+                        <!-- Judul -->
+                        <h1 class="text-4xl md:text-5xl font-extrabold mt-4 leading-tight">
+                            Create Your Event & <br> Inspire Others
+                        </h1>
+
+                        <!-- Deskripsi -->
+                        <p class="mt-4 text-white/80 max-w-xl">
+                            Buat event webinar, workshop, atau bootcamp dengan mudah.
+                            Kelola, publikasikan, dan jangkau lebih banyak peserta di EventSpeak.
+                        </p>
+
+                        <!-- Icon dekorasi kanan -->
+                        <div class="absolute right-10 bottom-[-20px] opacity-20">
+                            <span class="material-symbols-outlined text-[180px]">
+                                event_available
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Form -->
+                <form method="POST" action="proses_tambah_event.php" enctype="multipart/form-data" class="space-y-8">
+
+                    <!-- Gambar Event -->
+                    <div class="bg-blue-50 border-l-4 border-teal-400 p-6 rounded-xl shadow-sm">
+                        <label class="font-bold text-sm mb-3 block">Gambar Event</label>
+
+                        <div class="flex items-center gap-6">
+                            <img id="previewGambar" src="eventspeak/img/seventten.jpg"
+                                class="w-28 h-28 rounded-xl object-cover">
+
+                            <input type="file" name="gambar" class="text-sm" onchange="previewImage(event)">
+                        </div>
+                    </div>
+                    <!-- Jenis Event -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <label
+                            class="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 bg-teal-100 px-3 py-1 rounded-full mb-2">
+                            <span class="material-symbols-outlined text-[18px]">category</span>
+                            Jenis Event
+                        </label>
+
+                        <select name="jenis_event" class="w-full rounded-xl border border-slate-200 px-4 py-3 bg-white 
+               focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none 
+               text-slate-700 font-medium">
+
+                            <option value="">-- Pilih Jenis Event --</option>
+                            <option value="webinar">Webinar</option>
+                            <option value="workshop">Workshop</option>
+                            <option value="bootcamp">Bootcamp</option>
+
+                        </select>
+                    </div>
+                    <!-- Nama Event -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <label
+                            class="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 bg-teal-100 px-3 py-1 rounded-full mb-2">
+                            <span class="material-symbols-outlined text-[18px]">edit</span>
+                            Nama Event
+                        </label>
+                        <input type="text" name="nama_event" value="Global Tech Futures 2024"
+                            class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    </div>
+
+                    <!-- Deskripsi -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <label
+                            class="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 bg-teal-100 px-3 py-1 rounded-full mb-2">
+                            <span class="material-symbols-outlined text-[18px]">description</span>
+                            Deskripsi Event
+                        </label>
+                        <textarea name="deskripsi" rows="5"
+                            class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-primary outline-none">Event teknologi terbesar membahas masa depan AI, Web3, dan startup.</textarea>
+                    </div>
+
+                    <!-- Tanggal -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <label
+                            class="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 bg-teal-100 px-3 py-1 rounded-full mb-2">
+                            <span class="material-symbols-outlined text-[18px]">event</span>
+                            Tanggal Event
+                        </label>
+                        <input type="date" name="tanggal" value="2026-03-14"
+                            class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    </div>
+
+                    <!-- Lokasi -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <label
+                            class="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 bg-teal-100 px-3 py-1 rounded-full mb-2">
+                            <span class="material-symbols-outlined text-[18px]">location_on</span>
+                            Lokasi Event
+                        </label>
+                        <input type="text" name="lokasi" value='Fasilkom UPN "VETERAN" Jawa Timur'
+                            class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                    </div>
+
+                    <!-- Pemateri -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <label
+                            class="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 bg-teal-100 px-3 py-1 rounded-full mb-4">
+                            <span class="material-symbols-outlined text-[18px]">person</span>
+                            Pemateri
+                        </label>
+
+                        <!-- Foto + Nama -->
+                        <div class="flex items-center gap-4 mb-4">
+                            <!-- Foto Pemateri -->
+                            <img id="previewPemateri" src="img/pemateri.jpg" alt="Foto Pemateri"
+                                class="w-16 h-16 rounded-full object-cover border">
+
+                            <!-- Nama Pemateri -->
+                            <input type="text" name="Pemateri" value="Khodijah, S.M"
+                                class="flex-1 rounded-xl border border-slate-200 px-4 py-3 focus:ring-2 focus:ring-primary outline-none">
+                        </div>
+
+                        <!-- Upload Gambar -->
+                        <input type="file" name="foto_pemateri" onchange="previewPemateriImage(event)" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 
+        file:rounded-lg file:border-0 file:text-sm file:font-semibold 
+        file:bg-teal-100 file:text-teal-700 hover:file:bg-teal-500">
+                    </div>
+                    <!-- Button -->
+                    <div class="flex justify-between items-center">
+                        <button type="button" onclick="window.location.href='dashboard.php'"
+                            class="flex-1 lg:flex-none px-4 py-2 bg-surface-container-low text-on-surface font-semibold rounded-xl text-sm flex items-center justify-center gap-2">
+
+                            <span class="material-symbols-outlined text-sm">arrow_back</span>
+                            Kembali
+                        </button>
+
+                        <button type="button" onclick="openModal()"
+                            class="bg-teal-900 text-white px-6 py-3 rounded-xl hover:bg-teal-700">
+                            Simpan Perubahan
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </main>
+    </div>
+    <!-- Modal Sign Out -->
+    <div id="logoutModal" class="fixed inset-0 bg-black/40 hidden z-50">
+
+        <!-- CENTER PAKAI ABSOLUTE -->
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+
+            <div id="modalBox"
+                class="bg-white rounded-xl p-6 w-[90%] max-w-sm shadow-lg scale-95 opacity-0 transition duration-200">
+
+                <h2 class="text-lg font-bold mb-2">Konfirmasi</h2>
+                <p class="text-slate-600 text-sm mb-6">
+                    Anda yakin ingin keluar?
+                </p>
+
+                <div class="flex justify-between gap-3">
+                    <button type="button" onclick="closeModal()"
+                        class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+                        Batalkan
+                    </button>
+
+                    <button type="button" "logout()"
+                        class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+                        Keluar
                     </button>
                 </div>
-            </header>
-            <!-- Bento Grid Stats -->
-            <section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
-                <div
-                    class="md:col-span-2 bg-gradient-to-br from-primary to-indigo-900 p-8 rounded-xl text-on-primary flex flex-col justify-between overflow-hidden relative min-h-[220px]">
-                    <div class="relative z-10">
-                        <p class="text-primary-fixed-dim font-medium uppercase tracking-wider text-xs mb-1">Total
-                            Registrations</p>
-                        <h3 class="text-6xl font-black tracking-tighter">10</h3>
-                    </div>
-                    <!-- Subtle Texture/Graphic -->
-                    <div class="absolute -right-10 -bottom-10 opacity-20 transform rotate-12">
-                        <span class="material-symbols-outlined text-[180px]"
-                            style="font-variation-settings: 'FILL' 1;">analytics</span>
-                    </div>
-                </div>
-                <div
-                    class="bg-surface-container-lowest p-8 rounded-xl shadow-none border-none tonal-transition-surface-container-low flex flex-col justify-between min-h-[220px]">
 
-                    <div>
-                        <p class="text-slate-400 font-medium uppercase tracking-wider text-xs mb-1">
-                            Active Events
-                        </p>
-
-                        <!-- ANGKA DINAMIS -->
-                        <h3 class="text-5xl font-bold tracking-tight text-on-surface">
-                            03
-                        </h3>
-                    </div>
-
-                    <!-- PROGRESS -->
-                    <div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
-                        <div class="h-full bg-primary w-[75%] rounded-full"></div>
-                    </div>
-
-                    <p class="text-slate-500 text-xs mt-2">
-                        2 published, 1 draft
-                    </p>
-
-                </div>
-                <div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-between min-h-[220px]">
-                    <div>
-                        <p class="text-slate-400 font-medium uppercase tracking-wider text-xs mb-1">Pembicara terdaftar
-                        </p>
-                        <h3 class="text-5xl font-bold tracking-tight text-on-surface">3</h3>
-                    </div>
-                </div>
-            </section>
-            <!-- Events List Section -->
-            <section class="max-w-6xl mx-auto">
-                <div class="flex items-center justify-between mb-8">
-                    <h2 class="text-3xl font-extrabold tracking-tight">Your Events</h2>
-                    <div class="flex gap-4">
-                        <button type="button"
-                            class="text-slate-500 font-bold text-sm border-b-2 border-primary pb-1">All Events</button>
-                    </div>
-                </div>
-                <div class="space-y-6">
-<?php
-include '../koneksi.php';
-
-$query = mysqli_query($conn, "SELECT * FROM Penyelenggara ORDER BY id DESC");
-
-while($data = mysqli_fetch_assoc($query)) {
-?>
-<div class="bg-surface-container-lowest rounded-xl p-6 transition-all hover:translate-x-1 duration-300 border-l-4 border-primary">
-    <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-
-        <!-- KIRI -->
-        <div class="flex items-center gap-6">
-            <div class="w-24 h-24 rounded-xl overflow-hidden bg-slate-200 flex-shrink-0">
-                <img src="upload/<?= $data['Gambar'] ?? 'default.png' ?>" class="w-full h-full object-cover">
             </div>
 
-            <div>
-               <div class="flex items-center gap-2 mb-1 flex-wrap">
-    <span class="bg-indigo-100 text-teal-700 text-[10px] px-2 py-0.5 rounded">
-        Published
-    </span>
+        </div>
+    </div>
+    <!-- Overlay -->
+    <div id="modalKonfirmasi" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
 
-    <!-- INI BAGIANNYA -->
-    <span class="bg-blue-100 text-teal-700 text-[10px] px-2 py-0.5 rounded">
-    <?= $data['Jenis_Event'] ?? '-' ?>
-</span>
-</div>
+        <!-- Box Modal -->
+        <div class="bg-white rounded-2xl p-6 w-full max-w-sm text-center shadow-lg">
+            <h2 class="text-lg font-semibold mb-4">
+                Simpan Perubahan Event dan siap Publikasi?
+            </h2>
 
-                <h3 class="text-xl font-bold"><?= $data['Nama_Event'] ??'-'?></h3>
+            <div class="flex justify-center gap-4">
+                <!-- Tombol Tidak -->
+                <button onclick="closeModal()" class="px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300">
+                    Tidak
+                </button>
 
-                <div class="flex flex-wrap gap-x-6 mt-2 text-slate-500 text-sm">
-                    <div class="flex items-center gap-1">
-                        <span class="material-symbols-outlined text-sm">calendar_today</span>
-                        <span><?= $data['Tanggal'] ??'-'?></span>
-                    </div>
-
-                    <div class="flex items-center gap-1">
-                        <span class="material-symbols-outlined text-sm">location_on</span>
-                        <span><?= $data['Lokasi'] ??'-' ?></span>
-                    </div>
-                </div>
+                <!-- Tombol Simpan -->
+              <button type="button" onclick="submitForm()"
+    class="px-4 py-2 rounded-lg bg-teal-600 text-white">
+    Simpan & Publish
+</button>
             </div>
         </div>
-
-        <!-- KANAN -->
-        <div class="flex gap-2">
-            <button onclick="window.location.href='Editevent.php?id=<?= $data['id'] ?>'"
-                class="px-4 py-2 bg-slate-200 rounded-xl">
-                Edit
-            </button>
-
-            <button onclick="hapusEvent(<?= $data['id'] ?>)"
-                class="px-4 py-2 bg-red-500 text-white rounded-xl">
-                Hapus
-            </button>
-        </div>
-
     </div>
-</div>
-<?php } ?>
-                    <!-- Speakers Section -->
-                    <section class="max-w-6xl mx-auto mt-16">
-                        <div class="flex items-center justify-between mb-8">
-                            <h2 class="text-3xl font-extrabold tracking-tight">
-                                Pembicara Terdaftar
-                            </h2>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                            <!-- Speaker Card -->
-                            <div class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all">
-                                <div class="flex items-center gap-4">
-                                    <img class="w-14 h-14 rounded-full object-cover"
-                                        src="https://i.pravatar.cc/150?img=12" alt="speaker">
-                                    <div>
-                                        <h3 class="font-bold text-on-surface">Ibrahim</h3>
-                                        <p class="text-sm text-slate-500">Product Manager @ Google</p>
-                                    </div>
-                                </div>
-                                <p class="text-sm text-slate-500 mt-4">
-                                    Keahlian: UI/UX
-                                </p>
-                            </div>
-
-                            <!-- Speaker Card -->
-                            <div class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all">
-                                <div class="flex items-center gap-4">
-                                    <img class="w-14 h-14 rounded-full object-cover"
-                                        src="https://i.pravatar.cc/150?img=32" alt="speaker">
-                                    <div>
-                                        <h3 class="font-bold text-on-surface">Khodijah</h3>
-                                        <p class="text-sm text-slate-500">Startup Advisor</p>
-                                    </div>
-                                </div>
-                                <p class="text-sm text-slate-500 mt-4">
-                                    Keahlian: Bisnis
-                                </p>
-                            </div>
-
-                            <!-- Speaker Card -->
-                            <div class="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all">
-                                <div class="flex items-center gap-4">
-                                    <img class="w-14 h-14 rounded-full object-cover"
-                                        src="https://i.pravatar.cc/150?img=45" alt="speaker">
-                                    <div>
-                                        <h3 class="font-bold text-on-surface">Amanda Rizky</h3>
-                                        <p class="text-sm text-slate-500">CEO geprekin</p>
-                                    </div>
-                                </div>
-                                <p class="text-sm text-slate-500 mt-4">
-                                    Keahlian: Bisnis & Keuangan
-                                </p>
-                            </div>
-
-                        </div>
-                    </section>
-                </div>
-    </div>
-    </section>
-    </main>
-
     <!-- Footer -->
-    <footer class="w-full py-16 px-8 mt-auto bg-slate-100 dark:bg-slate-950">
+    <footer class="mt-auto bg-white px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
 
             <div class="col-span-1">
@@ -491,69 +494,7 @@ while($data = mysqli_fetch_assoc($query)) {
         <div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 text-center">
             <p class="font-inter text-sm text-slate-500 dark:text-slate-400">
                 © 2026 EventSpeak
-
-                <!-- Modal Sign Out -->
-            <div id="logoutModal" class="fixed inset-0 bg-black/40 hidden z-50">
-
-                <!-- CENTER PAKAI ABSOLUTE -->
-                <div class="absolute inset-0 flex items-center justify-center p-4">
-
-                    <div id="modalBox"
-                        class="bg-white rounded-xl p-6 w-[90%] max-w-sm shadow-lg scale-95 opacity-0 transition duration-200">
-
-                        <h2 class="text-lg font-bold mb-2">Konfirmasi</h2>
-                        <p class="text-slate-600 text-sm mb-6">
-                            Anda yakin ingin keluar?
-                        </p>
-
-                        <div class="flex justify-between gap-3">
-                            <button onclick="closeModal()"
-                                class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg">
-                                Batalkan
-                            </button>
-
-                            <button onclick="logout()"
-                                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
-                                Keluar
-                            </button>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <!-- Modal Hapus -->
-            <div id="deleteModal" class="fixed inset-0 bg-black/40 hidden z-50">
-
-                <div class="absolute inset-0 flex items-center justify-center p-4">
-
-                    <div id="deleteBox"
-                        class="bg-white rounded-xl p-6 w-[90%] max-w-sm shadow-lg scale-95 opacity-0 transition duration-200">
-
-                        <h2 class="text-lg font-bold mb-2 text-red-600">Hapus Event</h2>
-                        <p class="text-slate-600 text-sm mb-6">
-                            Anda yakin mau menghapus event ini?
-                        </p>
-
-                        <!-- Tombol -->
-                        <div class="flex justify-center gap-3">
-
-                            <button onclick="closeDeleteModal()"
-                                class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg">
-                                Batalkan
-                            </button>
-
-                            <button onclick="deleteEvent()"
-                                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
-                                Hapus
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
+            </p>
             <script>
                 function openModal() {
                     const modal = document.getElementById("logoutModal");
@@ -586,36 +527,64 @@ while($data = mysqli_fetch_assoc($query)) {
                 }
             </script>
             <script>
-                function openDeleteModal() {
-                    const modal = document.getElementById("deleteModal");
-                    const box = document.getElementById("deleteBox");
-
-                    modal.classList.remove("hidden");
-
-                    setTimeout(() => {
-                        box.classList.remove("scale-95", "opacity-0");
-                    }, 10);
+                function openModal() {
+                    document.getElementById('modalKonfirmasi').classList.remove('hidden');
+                    document.getElementById('modalKonfirmasi').classList.add('flex');
                 }
 
-                function closeDeleteModal() {
-                    const modal = document.getElementById("deleteModal");
-                    const box = document.getElementById("deleteBox");
-
-                    box.classList.add("scale-95", "opacity-0");
-
-                    setTimeout(() => {
-                        modal.classList.add("hidden");
-                    }, 200);
+                function closeModal() {
+                    document.getElementById('modalKonfirmasi').classList.remove('flex');
+                    document.getElementById('modalKonfirmasi').classList.add('hidden');
                 }
 
-                function deleteEvent() {
-                    alert("Event berhasil dihapus!");
-                    closeDeleteModal();
-
-                    // nanti bisa ditambah:
-                    // hapus dari database / redirect
+                function submitForm() {
+                    // ganti dengan id form kamu
+                    document.querySelector('form').submit();
                 }
             </script>
+            <script>
+                function previewImage(event) {
+                    const input = event.target;
+                    const preview = document.getElementById('previewGambar');
+
+                    if (input.files && input.files[0]) {
+                        const reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            preview.src = e.target.result;
+                        }
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+            </script>
+            <script>
+                function previewPemateriImage(event) {
+                    const input = event.target;
+                    const preview = document.getElementById('previewPemateri');
+
+                    if (input.files && input.files[0]) {
+                        const reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            preview.src = e.target.result;
+                        }
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+            </script>
+            <script>
+function submitForm() {
+    document.querySelector("form").submit();
+}
+</script>
+<script>
+function submitForm() {
+    alert("KEKLIK"); // tes dulu
+    document.querySelector("form").submit();
+}
+</script>
 </body>
 
 </html>
