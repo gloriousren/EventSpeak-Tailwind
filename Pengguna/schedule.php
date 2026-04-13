@@ -129,13 +129,13 @@
             href="eksplorasi.php">Featured</a>
           <a
             class="text-teal-700 dark:text-teal-300 border-b-2 border-teal-700 dark:border-teal-300 pb-1 font-headline font-semibold tracking-tight"
-            href="#">Schedule</a>
+            href="schedule.php">Schedule</a>
           <a
             class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-            href="#">Become a Speaker</a>
+            href="../Pembicara/pembicara-registrasi.php">Become a Speaker</a>
           <a
             class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-            href="#">Team</a>
+            href="team.php">Team</a>
         </div>
       </div>
       <!-- Avatar Profil -->
@@ -292,11 +292,10 @@
                 <span class="material-symbols-outlined text-base">schedule</span>
                 09:00 AM - 12:00 PM
               </div>
-              <button
-                class="mt-4 w-full py-2 bg-white text-primary font-bold rounded hover:bg-opacity-90 transition-all"
-                type="button">
-                Book Seat
-              </button>
+              <a href="detail-event.php" 
+                  class="mt-4 w-full py-2 bg-white text-primary font-bold rounded hover:bg-opacity-90 transition-all text-center block">
+                  Book Seat
+              </a>
             </div>
             <!-- Highlight Item 2 -->
             <div class="bg-white/5 p-4 rounded-lg">

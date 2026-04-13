@@ -145,13 +145,13 @@ $isLoggedIn = isset($_SESSION['user']);
             href="eksplorasi.php">Featured</a>
           <a
             class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-            href="#">Schedule</a>
+            href="schedule.php">Schedule</a>
           <a
             class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-            href="#">Become a Speaker</a>
+            href="../Pembicara/pembicara-registrasi.php">Become a Speaker</a>
           <a
             class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-            href="#">Team</a>
+            href="team.php">Team</a>
         </div>
       </div>
       <div class="flex items-center gap-4">
@@ -292,7 +292,7 @@ $isLoggedIn = isset($_SESSION['user']);
             </p>
             <a
               class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all"
-              href="login.php">
+              href="eksplorasi.php">
               Jelajahi Workshop
               <span class="material-symbols-outlined">trending_flat</span>
             </a>
@@ -314,7 +314,7 @@ $isLoggedIn = isset($_SESSION['user']);
             </p>
             <a
               class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all"
-              href="login.php">
+              href="eksplorasi.php">
               Jelajahi Webinar
               <span class="material-symbols-outlined">trending_flat</span>
             </a>
@@ -336,7 +336,7 @@ $isLoggedIn = isset($_SESSION['user']);
             </p>
             <a
               class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all"
-              href="login.php">
+              href="eksplorasi.php">
               Jelajahi Bootcamp
               <span class="material-symbols-outlined">trending_flat</span>
             </a>
@@ -357,11 +357,12 @@ $isLoggedIn = isset($_SESSION['user']);
               Pilihan kurasi untuk pertumbuhan intelektual Anda.
             </p>
           </div>
-          <button
+          <a
             type="button"
-            class="text-primary font-bold border-b-2 border-primary/20 hover:border-primary transition-all">
+            class="text-primary font-bold border-b-2 border-primary/20 hover:border-primary transition-all"
+            href="eksplorasi.php">
             Lihat Semua Event
-          </button>
+            </a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           <!-- Event Card 1 -->
@@ -395,7 +396,7 @@ $isLoggedIn = isset($_SESSION['user']);
                 class="flex items-center justify-between border-t border-outline-variant/10 pt-6">
                 <span class="text-tertiary font-bold text-lg">Rp 150.000</span>
                 <a
-                  href="login.php"
+                  href="detail-event.php"
                   class="px-5 py-2 bg-tertiary text-on-tertiary rounded-md font-bold text-sm hover:opacity-90 transition-opacity">
                   Book Seat
                 </a>
@@ -433,7 +434,7 @@ $isLoggedIn = isset($_SESSION['user']);
                 class="flex items-center justify-between border-t border-outline-variant/10 pt-6">
                 <span class="text-tertiary font-bold text-lg">Rp 2.500.000</span>
                 <a
-                  href="login.php"
+                  href="detail-event.php"
                   class="px-5 py-2 bg-tertiary text-on-tertiary rounded-md font-bold text-sm hover:opacity-90 transition-opacity">
                   Book Seat
                 </a>
@@ -471,7 +472,7 @@ $isLoggedIn = isset($_SESSION['user']);
                 class="flex items-center justify-between border-t border-outline-variant/10 pt-6">
                 <span class="text-tertiary font-bold text-lg">Rp 450.000</span>
                 <a
-                  href="login.php"
+                  href="detail-event.php"
                   class="px-5 py-2 bg-tertiary text-on-tertiary rounded-md font-bold text-sm hover:opacity-90 transition-opacity">
                   Book Seat
                 </a>

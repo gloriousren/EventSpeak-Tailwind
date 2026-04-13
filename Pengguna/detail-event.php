@@ -13,6 +13,9 @@ $isLoggedIn = isset($_SESSION['user']);
 <title>EventSpeak - Detail Event</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
         tailwind.config = {
@@ -115,12 +118,12 @@ $isLoggedIn = isset($_SESSION['user']);
           >
           <div class="hidden md:flex gap-8 items-center">
             <a
-             class="text-teal-700 dark:text-teal-300 border-b-2 border-teal-700 dark:border-teal-300 pb-1 font-headline font-semibold tracking-tight"
+             class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
               href="index.php"
               >Browse</a
             >
             <a
-              class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
+              class="text-teal-700 dark:text-teal-300 border-b-2 border-teal-700 dark:border-teal-300 pb-1 font-headline font-semibold tracking-tight"
               href="eksplorasi.php"
               >Featured</a
             >
@@ -143,7 +146,12 @@ $isLoggedIn = isset($_SESSION['user']);
         </div>
         <div class="flex items-center gap-4">
             <?php if ($isLoggedIn): ?>
-                <span class="text-sm font-semibold text-primary">Hi, User</span>
+                <a href="profil.php"
+            class="w-10 h-10 rounded-full overflow-hidden shadow-md hover:scale-95 transition">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7V9Te4MhqGJF4B4UsLUoraWH5dNjTAK7sF-VbS5sDev2unalotsCqi2Q_70_T605O60TpZlQtsOtRCNXGBvbl7-6P-yDfvh-iN2Z7MUwwAmyB67x5O_bRbbL8FgWSl53ELODN0CUecRzMlPpD8vgswrMx9ETO1UZznR_v1GIgzQYnq8YYd2p5Decj1MclJm1CpX5_WVxP1cma9cDke40F4j2jEZ7PTXuTM-4SuZp0HU2sYHghdTkYo2ZGvfwg2s2XJ3BN9i6cLA"
+              class="w-full h-full object-cover">
+          </a>
                 <?php else: ?>
                     <a href="login.php">
                     <button
