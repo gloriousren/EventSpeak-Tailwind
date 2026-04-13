@@ -1,7 +1,8 @@
 <?php
 session_start();
+$isLoggedIn = isset($_SESSION['user']);
 
-if (!isset($_SESSION['user'])) {
+if (!$isLoggedIn) {
   header("Location: login.php");
   exit;
 }
@@ -125,7 +126,7 @@ if (!isset($_SESSION['user'])) {
   <body
     class="bg-background text-on-surface font-body selection:bg-secondary-container"
   >
-    <!-- TopNavBar -->
+   <!-- TopNavBar -->
     <nav
       class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0px_20px_40px_rgba(25,28,30,0.06)] h-20"
     >
@@ -139,13 +140,13 @@ if (!isset($_SESSION['user'])) {
           >
           <div class="hidden md:flex gap-8 items-center">
             <a
-             class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-              href="index.php"
+             class="text-teal-700 dark:text-teal-300 border-b-2 border-teal-700 dark:border-teal-300 pb-1 font-headline font-semibold tracking-tight"
+              href="#"
               >Browse</a
             >
             <a
-              class="text-teal-700 dark:text-teal-300 border-b-2 border-teal-700 dark:border-teal-300 pb-1 font-headline font-semibold tracking-tight"
-              href="eksplorasi.php"
+              class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
+              href="#"
               >Featured</a
             >
             <a
@@ -166,17 +167,36 @@ if (!isset($_SESSION['user'])) {
           </div>
         </div>
         <div class="flex items-center gap-4">
-          
-        <a href="profil.php" class="w-10 h-10 rounded-full overflow-hidden shadow-md hover:scale-95 transition">
+  <?php if ($isLoggedIn): ?>
+
+    <!-- Avatar -->
+    <a href="profil.php" 
+    class="w-10 h-10 rounded-full overflow-hidden shadow-md hover:scale-95 transition">
       <img 
         src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7V9Te4MhqGJF4B4UsLUoraWH5dNjTAK7sF-VbS5sDev2unalotsCqi2Q_70_T605O60TpZlQtsOtRCNXGBvbl7-6P-yDfvh-iN2Z7MUwwAmyB67x5O_bRbbL8FgWSl53ELODN0CUecRzMlPpD8vgswrMx9ETO1UZznR_v1GIgzQYnq8YYd2p5Decj1MclJm1CpX5_WVxP1cma9cDke40F4j2jEZ7PTXuTM-4SuZp0HU2sYHghdTkYo2ZGvfwg2s2XJ3BN9i6cLA"
         class="w-full h-full object-cover"
       >
     </a>
 
+  <?php else: ?>
+
+    <a href="login.php"
+      class="px-5 py-2 text-primary font-semibold hover:bg-slate-100 rounded-xl">
+      Login
+    </a>
+
+    <a href="registrasi.php"
+      class="px-6 py-2 bg-primary text-on-primary font-bold rounded-xl shadow-md hover:scale-95 duration-200">
+      Sign Up
+    </a>
+
+  <?php endif; ?>
+</div>
+
       </div>
       </div>
     </nav>
+
     <!-- Main Content Wrapper -->
     <main
       class="pt-28 pb-16 px-8 max-w-7xl mx-auto min-h-screen flex flex-col md:flex-row gap-12"
@@ -301,6 +321,7 @@ if (!isset($_SESSION['user'])) {
           <div
             class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0px_20px_40px_rgba(25,28,30,0.06)] relative"
           >
+          <a href="/eventspeak/pengguna/detail-event.php" class="absolute inset-0 z-10"></a>
             <div class="relative h-56 overflow-hidden">
               <img
                 alt=""
@@ -323,7 +344,7 @@ if (!isset($_SESSION['user'])) {
                   >
                   <span
                     class="text-[10px] uppercase font-bold text-outline-variant tracking-widest"
-                    >OKT</span
+                    >April</span
                   >
                 </div>
               </div>
@@ -334,7 +355,7 @@ if (!isset($_SESSION['user'])) {
               >
                 Mastering UX Design Systems for Enterprise
               </h3>
-              <div class="flex items-center gap-3 mb-6">
+              <div class="flex items-center gap-3 mb-6" href>
                 <img
                   alt=""
                   class="w-8 h-8 rounded-full object-cover"
@@ -362,6 +383,7 @@ if (!isset($_SESSION['user'])) {
           <div
             class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0px_20px_40px_rgba(25,28,30,0.06)] relative"
           >
+          <a href="/eventspeak/pengguna/detail-event.php" class="absolute inset-0 z-10"></a>
             <div class="relative h-56 overflow-hidden">
               <img
                 alt=""
@@ -425,6 +447,7 @@ if (!isset($_SESSION['user'])) {
           <div
             class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0px_20px_40px_rgba(25,28,30,0.06)] relative"
           >
+          <a href="/eventspeak/pengguna/detail-event.php" class="absolute inset-0 z-10"></a>
             <div class="relative h-56 overflow-hidden">
               <img
                 alt=""
@@ -486,6 +509,7 @@ if (!isset($_SESSION['user'])) {
           <div
             class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0px_20px_40px_rgba(25,28,30,0.06)] relative"
           >
+          <a href="/eventspeak/pengguna/detail-event.php" class="absolute inset-0 z-10"></a>
             <div class="relative h-56 overflow-hidden">
               <img
                 alt=""
