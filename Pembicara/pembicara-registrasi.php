@@ -108,8 +108,39 @@
     </style>
   </head>
   <body class="bg-surface font-body text-on-surface overflow-x-hidden">
-    <div class="min-h-screen flex items-center justify-center relative p-6">
 
+  <!-- TopNavBar -->
+  <nav
+    class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0px_20px_40px_rgba(25,28,30,0.06)] h-20"
+  >
+    <div class="flex justify-between items-center px-8 h-full max-w-full mx-auto">
+      <div class="flex items-center gap-12">
+        <span class="text-2xl font-black text-teal-900 dark:text-teal-100 font-headline tracking-tight">
+          EventSpeak
+        </span>
+        <div class="hidden md:flex gap-8 items-center">
+          <a class="font-manrope text-slate-600 hover:text-teal-600" href="../Pengguna/index.php">Browse</a>
+          <a class="font-manrope text-slate-600 hover:text-teal-600" href="../Pengguna/eksplorasi.php">Featured</a>
+          <a class="font-manrope text-slate-600 hover:text-teal-600" href="#">Schedule</a>
+          <a class="text-teal-700 border-b-2 border-teal-700 pb-1 font-headline font-semibold" href="pembicara-registrasi.php">Become a Speaker</a>
+          <a class="font-manrope text-slate-600 hover:text-teal-600" href="#">Team</a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="../Pengguna/profil.php" class="w-10 h-10 rounded-full overflow-hidden shadow-md hover:scale-95 transition">
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7V9Te4MhqGJF4B4UsLUoraWH5dNjTAK7sF-VbS5sDev2unalotsCqi2Q_70_T605O60TpZlQtsOtRCNXGBvbl7-6P-yDfvh-iN2Z7MUwwAmyB67x5O_bRbbL8FgWSl53ELODN0CUecRzMlPpD8vgswrMx9ETO1UZznR_v1GIgzQYnq8YYd2p5Decj1MclJm1CpX5_WVxP1cma9cDke40F4j2jEZ7PTXuTM-4SuZp0HU2sYHghdTkYo2ZGvfwg2s2XJ3BN9i6cLA"
+            class="w-full h-full object-cover"
+          >
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Tambahkan padding top supaya konten tidak ketutup navbar -->
+  <div class="min-h-screen flex items-center justify-center relative p-6 pt-28">
+    
       <!-- Background Elements -->
       <div class="absolute inset-0 z-0 overflow-hidden">
         <div
