@@ -7,4 +7,3 @@ $_SESSION = [];
 // redirect
 header("Location: index.php");
 exit;
-?>
