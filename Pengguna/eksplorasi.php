@@ -141,7 +141,7 @@ if (!$isLoggedIn) {
           <div class="hidden md:flex gap-8 items-center">
             <a
              class="text-teal-700 dark:text-teal-300 border-b-2 border-teal-700 dark:border-teal-300 pb-1 font-headline font-semibold tracking-tight"
-              href="#"
+              href="index.php"
               >Browse</a
             >
             <a
@@ -151,7 +151,7 @@ if (!$isLoggedIn) {
             >
             <a
               class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-              href="#"
+              href="schedule.php"
               >Schedule</a
             >
             <a
@@ -161,7 +161,7 @@ if (!$isLoggedIn) {
             >
             <a
               class="font-manrope text-slate-600 dark:text-slate-400 hover:text-teal-600 tracking-tight transition-colors"
-              href="#"
+              href="team.php"
               >Team</a
             >
           </div>
@@ -202,7 +202,7 @@ if (!$isLoggedIn) {
       class="pt-28 pb-16 px-8 max-w-7xl mx-auto min-h-screen flex flex-col md:flex-row gap-12"
     >
       <!-- Sidebar Filters -->
-      <aside class="w-full md:w-72 flex-shrink-0 space-y-10">
+      <form method="GET" class="w-full md:w-72 flex-shrink-0 space-y-10">
         <!-- Search Widget -->
         <div class="space-y-4">
           <h3
@@ -212,9 +212,11 @@ if (!$isLoggedIn) {
           </h3>
           <div class="relative group">
             <input
-              class="w-full pl-12 pr-4 py-3 bg-surface-container border-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all"
-              placeholder="Design, AI, Business..."
-              type="text"
+            type="text"
+            name="keyword"
+            value="<?= $_GET['keyword'] ?? '' ?>"
+            class="w-full pl-12 pr-4 py-3 bg-surface-container border-none rounded-xl"
+            placeholder="Design, AI, Business..."
             >
             <span
               class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline"
@@ -229,36 +231,46 @@ if (!$isLoggedIn) {
           >
             Kategori
           </h3>
+          <?php $selected = $_GET['jenis'] ?? []; ?>
           <div class="space-y-2">
-            <label
-              class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors group"
-            >
-              <input
-                checked
-                class="rounded border-outline text-primary focus:ring-primary"
-                type="checkbox"
-              >
-              <span class="text-on-surface font-medium">Workshop</span>
-            </label>
-            <label
-              class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors group"
-            >
-              <input
-                class="rounded border-outline text-primary focus:ring-primary"
-                type="checkbox"
-              >
-              <span class="text-on-surface font-medium">Webinar</span>
-            </label>
-            <label
-              class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors group"
-            >
-              <input
-                class="rounded border-outline text-primary focus:ring-primary"
-                type="checkbox"
-              >
-              <span class="text-on-surface font-medium">Bootcamp</span>
-            </label>
-          </div>
+
+  <!-- Workshop -->
+  <label class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors group">
+    <input
+      type="checkbox"
+      name="jenis[]"
+      value="Workshop"
+      class="rounded border-outline text-primary focus:ring-primary"
+      <?= in_array('Workshop', $selected) ? 'checked' : '' ?>
+    >
+    <span class="text-on-surface font-medium">Workshop</span>
+  </label>
+
+  <!-- Webinar -->
+  <label class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors group">
+    <input
+      type="checkbox"
+      name="jenis[]"
+      value="Webinar"
+      class="rounded border-outline text-primary focus:ring-primary"
+      <?= in_array('Webinar', $selected) ? 'checked' : '' ?>
+    >
+    <span class="text-on-surface font-medium">Webinar</span>
+  </label>
+
+  <!-- Bootcamp -->
+  <label class="flex items-center gap-3 p-3 rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors group">
+    <input
+      type="checkbox"
+      name="jenis[]"
+      value="Bootcamp"
+      class="rounded border-outline text-primary focus:ring-primary"
+      <?= in_array('Bootcamp', $selected) ? 'checked' : '' ?>
+    >
+    <span class="text-on-surface font-medium">Bootcamp</span>
+  </label>
+
+</div>
         </div>
         <!-- Price Range -->
         <div class="space-y-4">
@@ -282,6 +294,7 @@ if (!$isLoggedIn) {
             </div>
           </div>
         </div>
+
         <!-- Date -->
         <div class="space-y-4">
           <h3
@@ -289,18 +302,19 @@ if (!$isLoggedIn) {
           >
             Waktu
           </h3>
-          <input
-            class="w-full p-3 bg-surface-container border-none rounded-xl text-on-surface focus:ring-2 focus:ring-primary/20"
-            type="date"
+          <input 
+          type="date" 
+          name="tanggal"
+          value="<?= $_GET['tanggal'] ?? '' ?>"
           >
         </div>
         <button
-          type="button"
+          type="submit"
           class="w-full py-4 bg-secondary-container text-on-secondary-container font-bold rounded-xl hover:opacity-90 transition-opacity"
         >
           Terapkan Filter
         </button>
-      </aside>
+  </form>
       <!-- Content Area -->
       <section class="flex-grow">
         <!-- Header Editorial -->
@@ -311,264 +325,114 @@ if (!$isLoggedIn) {
             Temukan Panggung Intelektual Anda
           </h1>
           <p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed">
-            Kurasi workshop dan pelatihan dari pakar industri untuk
-            mengakselerasi pertumbuhan karier Anda.
+            Kurasi workshop dan pelatihan dari pakar industri untuk mengakselerasi pertumbuhan karier Anda.
           </p>
         </div>
-        <!-- Event Cards Grid -->
-        <div class="editorial-grid">
-          <!-- Card 1 -->
-          <div
-            class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0px_20px_40px_rgba(25,28,30,0.06)] relative"
-          >
-          <a href="/eventspeak/pengguna/detail-event.php" class="absolute inset-0 z-10"></a>
-            <div class="relative h-56 overflow-hidden">
-              <img
-                alt=""
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOLio2GzqKhh0LW7HBknt-kWzYbUbzAGtDLpJ6M8eXzlGZ8SXuBENApfTnsMtAVnQXRXfd7s1mShZwbynUsr30ya1FGw1dXsH55DdY61p43wKwlZSjUHYv1_5JxKpepLxHrYSyPsZmg8CUCc8OjBrbPVXsDxwTZiloogwRthdHKnrzIhPNGqi-KXNbIu364gbxIehxuZ3C5JzUbp3658jkg7eFC0a9y4A-a5VzL56w7TFR0R8Cz-8Tbf_ynHzU3oiw9uAt_znFT73F"
-              >
-              <div class="absolute top-4 left-4 flex gap-2">
-                <span
-                  class="bg-primary text-on-primary text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider"
-                  >Workshop</span
-                >
-              </div>
-              <div
-                class="absolute -bottom-1 right-6 bg-white p-4 rounded-t-xl shadow-sm"
-              >
-                <div class="text-center">
-                  <span
-                    class="block text-primary font-black text-xl leading-none"
-                    >24</span
-                  >
-                  <span
-                    class="text-[10px] uppercase font-bold text-outline-variant tracking-widest"
-                    >April</span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="p-8 flex flex-col flex-grow">
-              <h3
-                class="font-headline text-xl font-extrabold text-primary mb-2 leading-tight"
-              >
-                Mastering UX Design Systems for Enterprise
-              </h3>
-              <div class="flex items-center gap-3 mb-6" href>
-                <img
-                  alt=""
-                  class="w-8 h-8 rounded-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCziUlqiuX0wGMCTkzL7mZAFkRjZ38kJuu3x_dyoqAIMBOCAKi80RIHieoSkpkr8Xqu-D0nXq-lyol6k-pTpuuIBzvPge09ghE6o5Y1bYrQgDnuD3RJJP5YJlTHrZZRX3mHlPE9EA5xVkHHscLupcC4e0glCfceJhTwgWsmJ7DTfhHZN93OlSgqigbMIkmZK366dpGEhrfkqoB3OiVMTHqBfzz8JiD80RvWJG0BEhdLswPBk-r1uPXmu3ghrHX4SCbwE7HXxq7PH4os"
-                >
-                <span class="text-sm font-medium text-on-surface-variant"
-                  >Adrian Pratama, Lead Designer</span
-                >
-              </div>
-              <div
-                class="mt-auto flex justify-between items-center pt-6 border-t border-surface-container-high"
-              >
-                <span class="text-lg font-black text-tertiary">Rp 750.000</span>
-                <button
-                  type="button"
-                  class="material-symbols-outlined text-primary hover:scale-110 transition-transform"
-                  data-icon="arrow_forward_ios"
-                >
-                  arrow_forward_ios
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- Card 2 -->
-          <div
-            class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0px_20px_40px_rgba(25,28,30,0.06)] relative"
-          >
-          <a href="/eventspeak/pengguna/detail-event.php" class="absolute inset-0 z-10"></a>
-            <div class="relative h-56 overflow-hidden">
-              <img
-                alt=""
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUkSx6u4RVtRX42CWroR7oXgXX4yQ_tYeCh0-LsJ_yl31AHyOb4lODRsLBfCtN7StRYPCOJheUivmDXs7yr3QutmLOZ8BsDODofybmSeNBfGDLSE4oKon6IjWRjN_YDNP-qEUoRmzUOBZmmXsckzUdev50ln-RvKQq7sGZ_ti8HDJTeCqR5xUrxscdz7ORT5P3wWT49ikuryjwNcmPbGq3N0ibPTavCgFrHQPUazSUyvu-yWvPlMKFDA1SUdkPr74npR7o0XIVTtz4"
-              >
-              <div class="absolute top-4 left-4 flex gap-2">
-                <span
-                  class="bg-primary text-on-primary text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider"
-                  >Bootcamp</span
-                >
-              </div>
-              <div
-                class="absolute -bottom-1 right-6 bg-white p-4 rounded-t-xl shadow-sm"
-              >
-                <div class="text-center">
-                  <span
-                    class="block text-primary font-black text-xl leading-none"
-                    >12</span
-                  >
-                  <span
-                    class="text-[10px] uppercase font-bold text-outline-variant tracking-widest"
-                    >NOV</span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="p-8 flex flex-col flex-grow">
-              <h3
-                class="font-headline text-xl font-extrabold text-primary mb-2 leading-tight"
-              >
-                AI &amp; Machine Learning for Business Growth
-              </h3>
-              <div class="flex items-center gap-3 mb-6">
-                <img
-                  alt=""
-                  class="w-8 h-8 rounded-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd7pB4eHvmjXDl-ndfoVcK0gnkt7RaFbydSxaEuPpXqVIOVlSMbsCR49KqvV9GfXHJoqEsrKUzfssOHvE6IzuQIbnh-U3gvSqAls4qD-37Gh_K_ZgeJ6G0ETW-2PL9oJnYaIoYm6WvqN6oMQvPZcJWF_sPRGXP1LuNP8txI1vOZDEgmt42BSN1GCdHqlYEheru1y3MU-8XmDhoCClWoiYPEneYZT_8gNmbZ5U40R0R-Gv8S1ToJBiS2zlHeBBkkh1Eb_sw0i6UH6m-"
-                >
-                <span class="text-sm font-medium text-on-surface-variant"
-                  >Dr. Sarah Wijaya, AI Researcher</span
-                >
-              </div>
-              <div
-                class="mt-auto flex justify-between items-center pt-6 border-t border-surface-container-high"
-              >
-                <span class="text-lg font-black text-tertiary"
-                  >Rp 2.500.000</span
-                >
-                <button
-                  type="button"
-                  class="material-symbols-outlined text-primary hover:scale-110 transition-transform"
-                  data-icon="arrow_forward_ios"
-                >
-                  arrow_forward_ios
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- Card 3 -->
-          <div
-            class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0px_20px_40px_rgba(25,28,30,0.06)] relative"
-          >
-          <a href="/eventspeak/pengguna/detail-event.php" class="absolute inset-0 z-10"></a>
-            <div class="relative h-56 overflow-hidden">
-              <img
-                alt=""
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgj-37wkjlwed6H4ZuzVZnN3aZnIl0gNN0tSr-IBr280HaEQZcxtDB-3JlSa9llqjUuNxWNw55qlQYpkBSGugmHvlY4XNVdSL7lPBLKVVymNb2ePBojG-45LetSHJiTqv-iL5xFy8sRWa9thJ7QNMjXltzCfJSZlztL0-f0quRIBX9pOBfDjjDBi-nQSMOi6VbwsSD_bb55HJp9ZuMz5u2Kyw4XrCLP5bzb05kgH2EOKMyW1WzcInb9ZROZlJRKQ2-WCIbHTkXoUW5"
-              >
-              <div class="absolute top-4 left-4 flex gap-2">
-                <span
-                  class="bg-primary text-on-primary text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider"
-                  >Webinar</span
-                >
-              </div>
-              <div
-                class="absolute -bottom-1 right-6 bg-white p-4 rounded-t-xl shadow-sm"
-              >
-                <div class="text-center">
-                  <span
-                    class="block text-primary font-black text-xl leading-none"
-                    >05</span
-                  >
-                  <span
-                    class="text-[10px] uppercase font-bold text-outline-variant tracking-widest"
-                    >DES</span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="p-8 flex flex-col flex-grow">
-              <h3
-                class="font-headline text-xl font-extrabold text-primary mb-2 leading-tight"
-              >
-                Future of Remote Work: Culture &amp; Productivity
-              </h3>
-              <div class="flex items-center gap-3 mb-6">
-                <img
-                  alt=""
-                  class="w-8 h-8 rounded-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq8mKhrZFtmdEYpbSkxlRev0oVmBJaR-r5D8kMz-Kmd2q9Yxb_Z0tyZZ8o8o-ZQLAXaozYmKg99e3qzS6JtwaBOjJCtFkJGKTwQzCjTBaUc5OiQwaK1cpjHffQmCc5cUG5OGbg7y7yBUCnMSuin4c7IUQAS9d2ydZWkxdcmmxlkMZSypWgo7bQbory7MGu0vnUlExFencnjEjP6pXq0O61JPbgpH9vCP9jYDq6yyZx5UGwOdcCOd4GGnXSx9Cb-qMERcf1QIvl_6jh"
-                >
-                <span class="text-sm font-medium text-on-surface-variant"
-                  >Kevin Sanjaya, People Operations</span
-                >
-              </div>
-              <div
-                class="mt-auto flex justify-between items-center pt-6 border-t border-surface-container-high"
-              >
-                <span class="text-lg font-black text-tertiary">Gratis</span>
-                <button
-                  type="button"
-                  class="material-symbols-outlined text-primary hover:scale-110 transition-transform"
-                  data-icon="arrow_forward_ios"
-                >
-                  arrow_forward_ios
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- Card 4 -->
-          <div
-            class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0px_20px_40px_rgba(25,28,30,0.06)] relative"
-          >
-          <a href="/eventspeak/pengguna/detail-event.php" class="absolute inset-0 z-10"></a>
-            <div class="relative h-56 overflow-hidden">
-              <img
-                alt=""
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuALiN6Y8F7sG235R92ufHiAxXznX_iy0tPeJskhkjolTwp7JZa6ml6_hR6nRWPbKl2QX2rzCAJQrkHModVteKGRMK8p7Em2M_QkzPRlXzJveyVr5T6cnRm8Nzpn1smU-5oJNuLYHMfNDoZnu_OogQKnWfRvFOLHgTADgko2s6i4XWaLxnu4SydiGfboX6WUeoexX1qVtpfu_wdgP2gMmG-dxK9rb-8qRpTZYZuQTyqC8rboQBrTUrSVkgLXg6wUNCOr_NoSLhW3oNci"
-              >
-              <div class="absolute top-4 left-4 flex gap-2">
-                <span
-                  class="bg-primary text-on-primary text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider"
-                  >Workshop</span
-                >
-              </div>
-              <div
-                class="absolute -bottom-1 right-6 bg-white p-4 rounded-t-xl shadow-sm"
-              >
-                <div class="text-center">
-                  <span
-                    class="block text-primary font-black text-xl leading-none"
-                    >18</span
-                  >
-                  <span
-                    class="text-[10px] uppercase font-bold text-outline-variant tracking-widest"
-                    >DES</span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="p-8 flex flex-col flex-grow">
-              <h3
-                class="font-headline text-xl font-extrabold text-primary mb-2 leading-tight"
-              >
-                Financial Planning for Creative Freelancers
-              </h3>
-              <div class="flex items-center gap-3 mb-6">
-                <img
-                  alt=""
-                  class="w-8 h-8 rounded-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKV0mucHaO5tQoDgGOJNyHvGfYAnxQpv3PLr1WWdX1b-Ax2Qw35sA_bf-xH9yPiK14of1qSpTwhHJ8DyslelZMi6d49pbm7WFc8XBbCHb12SMkmpWtT3jbUdXyhElu18PY_qzSv2ut0ub6gvcnyJ-R6TUBCRto94fvqKhGhzJ47C2-n8LwWY4dgpHMp3OZyCebo8Zi1oILVKtUJxC6UPITKOrskQMSV-OQtkCre0jtC6E5rqib4Hn2Osq3uh-pR7pdz6MmuGgGKbN2"
-                >
-                <span class="text-sm font-medium text-on-surface-variant"
-                  >Rina Kartika, CFP</span
-                >
-              </div>
-              <div
-                class="mt-auto flex justify-between items-center pt-6 border-t border-surface-container-high"
-              >
-                <span class="text-lg font-black text-tertiary">Rp 450.000</span>
-                <button
-                  type="button"
-                  class="material-symbols-outlined text-primary hover:scale-110 transition-transform"
-                  data-icon="arrow_forward_ios"
-                >
-                  arrow_forward_ios
-                </button>
-              </div>
-            </div>
-          </div>
+
+        <?php
+$conn = mysqli_connect("127.0.0.1:3306", "root", "", "eventspeak");
+
+$query = "SELECT * FROM Penyelenggara WHERE 1=1";
+// 🔍 SEARCH KEYWORD
+if (!empty($_GET['keyword'])) {
+    $keyword = $_GET['keyword'];
+    $query .= " AND (
+        nama_event LIKE '%$keyword%' OR 
+        pemateri LIKE '%$keyword%' OR 
+        lokasi LIKE '%$keyword%'
+    )";
+}
+
+// kategori
+if (!empty($_GET['jenis'])) {
+    $jenis = $_GET['jenis'];
+    $jenisList = "'" . implode("','", $jenis) . "'";
+    $query .= " AND jenis_event IN ($jenisList)";
+}
+
+// harga
+if (!empty($_GET['min_harga']) && !empty($_GET['max_harga'])) {
+    $min = $_GET['min_harga'];
+    $max = $_GET['max_harga'];
+    $query .= " AND harga BETWEEN $min AND $max";
+}
+
+// tanggal
+if (!empty($_GET['tanggal'])) {
+    $tanggal = $_GET['tanggal'];
+    $query .= " AND tanggal <= '$tanggal'";
+}
+
+$result = mysqli_query($conn, $query);
+?>
+
+    <!-- Event Cards Grid -->
+     <div class="editorial-grid">
+
+<?php while($row = mysqli_fetch_assoc($result)) { ?>
+
+  <div class="group flex flex-col bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition">
+
+    <!-- GAMBAR -->
+    <div class="relative h-56">
+      <img src="../penyelenggara/upload/<?= $row['gambar'] ?>" 
+           class="w-full h-full object-cover group-hover:scale-105 transition">
+
+      <!-- Badge -->
+      <div class="absolute top-3 left-3">
+        <span class="bg-primary text-white text-xs px-3 py-1 rounded-full uppercase">
+          <?= $row['jenis_event'] ?>
+        </span>
+      </div>
+
+      <!-- Tanggal -->
+      <div class="absolute -bottom-4 right-4 bg-white px-3 py-2 rounded-xl shadow">
+        <div class="text-center">
+          <span class="block font-bold text-primary text-lg">
+            <?= date('d', strtotime($row['tanggal'])) ?>
+          </span>
+          <span class="text-xs text-gray-500 uppercase">
+            <?= date('M', strtotime($row['tanggal'])) ?>
+          </span>
         </div>
-        <div class="mt-16 flex justify-center">
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="p-6 flex flex-col flex-grow mt-6">
+
+      <h3 class="font-bold text-lg mb-2">
+        <?= $row['nama_event'] ?>
+      </h3>
+
+      <p class="text-sm text-gray-500 mb-4">
+        <?= $row['pemateri'] ?>
+      </p>
+
+      <!-- FOOTER -->
+      <div class="mt-auto flex justify-between items-center">
+        <span class="text-lg font-bold text-primary">
+          <?php
+          if ($row['harga'] == 0) {
+              echo "Gratis";
+          } else {
+              echo "Rp " . number_format($row['harga']);
+          }
+          ?>
+        </span>
+
+        <span class="text-primary text-xl">›</span>
+      </div>
+
+    </div>
+  </div>
+
+<?php } ?>
+
+</div>
+  </div>
+</div>
+         
           </button>
         </div>
       </section>
